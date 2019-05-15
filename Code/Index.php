@@ -22,6 +22,10 @@ try
     {
         showConnexion();
     }
+    else if(isset($accueilVisiteur))
+    {
+        require('view/view_Home.php');
+    }
     else
     {
         require('view/view_Home.php');

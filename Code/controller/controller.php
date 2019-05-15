@@ -16,14 +16,21 @@ function showInscription()
 {
     if(isset($_POST['fname']))
     {
-        if($_POST['fmdp'] == $_POST['fmdp2'])
+        if($_POST['fmail'] == $_POST['fmail2'])
         {
-            CreateAccount();
-            require "view/view_Connexion.php";
+            if($_POST['fmdp'] == $_POST['fmdp2'])
+            {
+                CreateAccount();
+                require "view/view_Connexion.php";
+            }
+            else
+            {
+                header('Location: index.php?inscription&erreur=2');
+            }
         }
         else
         {
-            header('Location: index.php?inscription&erreur=2');
+            header('Location: index.php?inscription&erreur=4');
         }
     }
     else
@@ -37,15 +44,6 @@ function showConnexion()
     if(isset($_POST['femail']))
     {
         ConnexionUser($_POST);
-
-        if($_SESSION['mailUtilisateur'] == $_POST['femail'])
-            {
-                require "view/view_Home.php";
-            }
-            else
-            {
-                header('Location: index.php?connexion&erreur=2');
-            }
     }
     else
     {

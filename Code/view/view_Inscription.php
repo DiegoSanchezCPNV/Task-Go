@@ -6,11 +6,13 @@
  * Time: 10:39
  */
 require_once('template.php');
-
+$special = 'àâäãçéèêëìîïòôöõùûüñ &*?!:;,\t#~"^¨%$£?²¤§%*()[]{}<>|\\/`\'';
 ?>
 
 <h1>Inscription</h1>
+<a href="?accueilVisiteur" class="linkHome">Accueil</a>
 <?php if(@$_GET['erreur']==2){ ?><font color="#FF0000">Les deux mot de passe ne sont pas compatible</font><?php unset($_GET['erreur']);} ?>
+<?php if(@$_GET['erreur']==4){ ?><font color="#FF0000">Les emails ne sont pas compatible</font><?php unset($_GET['erreur']);} ?>
 <?php if(@$_GET['erreur']==1){ ?><font color="#FF0000">cette adresse mail est déjà utilisée</font><?php unset($_GET['erreur']);} ?>
 <?php if(@$_GET['erreur']==3){ ?><font color="#FF0000">Veuillez vous créer un compte</font><?php unset($_GET['erreur']);} ?>
 <form method="POST" action="index.php?inscription" role="form" id="inscriptionForm" class="Formulaire">
@@ -52,7 +54,9 @@ require_once('template.php');
             <label for="fmdp">Mot de passe</label>
         </div>
         <div class="col-75">
-            <input type="text" id="fmdp" name="fmdp" placeholder="Veuillez entrer votre mot de passe" >
+            <input type="text" id="fmdp" name="fmdp" placeholder="Veuillez entrer votre mot de passe"
+                   pattern="(?=.*?[#?!@$%^&*-])[a-zA-ZÀ-ž0-9\s-]+.{7,}"
+                   title="Le mot de passe doit contenir au minimum 8 caractères, dont des lettres en majuscule, miniscule, des chiffres et au moins caractère spécial" required>
         </div>
     </div>
     <div class="row">
@@ -60,7 +64,9 @@ require_once('template.php');
             <label for="fmdp2">Confirmez votre mot de passe</label>
         </div>
         <div class="col-75">
-            <input type="text" id="fmdp2" name="fmdp2" placeholder="Veuillez confirmer votre mot de passe">
+            <input type="text" id="fmdp2" name="fmdp2" placeholder="Veuillez confirmer votre mot de passe"
+                   pattern="(?=.*?[#?!@$%^&*-])[a-zA-ZÀ-ž0-9\s-]+.{7,}"
+                   title="Le mot de passe doit contenir au minimum 8 caractères, dont des lettres en majuscule, miniscule, des chiffres et au moins caractère spécial" required>
         </div>
     </div><br>
     <div class="row">

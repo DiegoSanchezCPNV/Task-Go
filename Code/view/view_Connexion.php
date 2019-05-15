@@ -9,10 +9,10 @@ require_once('template.php');
 ?>
 
 <h1>Connexion</h1>
-<?php if(@$_GET['erreur']==2){ ?><font color="#FF0000">Les deux mot de passe ne sont pas compatible</font><?php unset($_GET['erreur']);} ?>
-<?php if(@$_GET['erreur']==1){ ?><font color="#FF0000">cette adresse mail est déjà utilisée</font><?php unset($_GET['erreur']);} ?>
-<?php if(@$_GET['erreur']==3){ ?><font color="#FF0000">Veuillez vous créer un compte</font><?php unset($_GET['erreur']);} ?>
-<?php if(@$_GET['erreur']==4){ ?><font color="#FF0000">Connexion OK</font><?php unset($_GET['erreur']);} ?>
+<a href="?accueilVisiteur" class="linkHome">Accueil</a>
+<?php if(@$_GET['erreur']==1){ ?><font color="#FF0000">Email ou mot de passe non valide</font><?php unset($_GET['erreur']);} ?>
+<?php if(@$_GET['erreur']==4){ ?><font color="#FF0000">Aucun compte créé avec cette adresse mail</font><?php unset($_GET['erreur']);} ?>
+<?php if(@$_GET['erreur']==2){ ?><font color="#FF0000">Veuillez valider votre adresse mail</font><?php unset($_GET['erreur']);} ?>
 <form method="POST" action="index.php?connexion" role="form" id="connexionForm" class="Formulaire">
     <div class="container">
         <div class="row">
@@ -20,7 +20,7 @@ require_once('template.php');
                 <label for="femail">Email</label>
             </div>
             <div class="col-75">
-                <input type="text" id="femail" name="femail" placeholder="Veuillez entrer votre email">
+                <input type="text" id="femail" name="femail" placeholder="Veuillez entrer votre email" required>
             </div>
         </div>
         <div class="row">
@@ -28,7 +28,7 @@ require_once('template.php');
                 <label for="fmdp">Mot de passe</label>
             </div>
             <div class="col-75">
-                <input type="text" id="fmdp" name="fmdp" placeholder="Veuillez entrer votre mot de passe">
+                <input type="text" id="fmdp" name="fmdp" placeholder="Veuillez entrer votre mot de passe" required>
             </div>
         </div><br>
         <div class="row">
