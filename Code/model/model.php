@@ -8,8 +8,10 @@
 
 function ConnexionDB()
 {
-   // $connexion = new PDO('mysql:host=localhost; dbname=TaskAndGo; charset=utf8','root','1234');
-    $connexion = new PDO('mysql:host=localhost; dbname=sanchezd_db; charset=utf8','sanchezd','Messi2011$');
+    //BDD en local
+    //$connexion = new PDO('mysql:host=localhost; dbname=TaskAndGo; charset=utf8','root','1234');
+    //BDD du site en ligne
+    $connexion = new PDO('mysql:host=localhost; dbname=sanchezd_TPI; charset=utf8','sanchezd_TPI','SanchezTPI2019$');
 
 
     $connexion ->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -28,6 +30,7 @@ function CreateAccount()
     $emailAtest =$connexion->query($requete);
     $ligne = $emailAtest->fetch();
     $emailDansBdd = $ligne['email'];
+    $mdp = sha1($fmdp);
 
     if($fmail == $emailDansBdd)
     {
@@ -36,7 +39,7 @@ function CreateAccount()
     }
 
     $query = $connexion->prepare("insert into user (id, firstName, lastName, password, email, reminder, termBefore, id_DisplayMode, displayNumber, isAdmin, isActive) 
-                                            values (null, '".$fname."', '".$fsurname."', '".$fmdp."', '".$fmail."', 0, 0, 1,5,0,0);");
+                                            values (null, '".$fname."', '".$fsurname."', '".$mdp."', '".$fmail."', 0, 0, 1,5,0,0);");
     $query->execute();
 }
 
@@ -44,24 +47,25 @@ function ConnexionUser()
 {
     $connexion = ConnexionDB();
 
-    //$mdp = sha1($_POST['fmdp']); //convertie le mot de passe
+    $leMDP = sha1($_POST['fmdp']); //converti en SHA1 le mot de passe entré par l'utilisateur
 
 // Requête pour sélectionner la personne loguée
-    $requete = "SELECT * FROM user WHERE email= '".$_POST['femail']."' AND password='".$_POST['fmdp']."';";
+    $requete = "SELECT * FROM user WHERE email= '".$_POST['femail']."' AND password='".$leMDP."';";
 
 // Exécution de la requête et renvoi des résultats
     $resultats = $connexion->query($requete);
 
     $ligne = $resultats->fetch();
     $leMail = $ligne['email'];
-    $leMDP = $ligne['password'];
+    $mdp = $ligne['password'];
+
     $isActive = $ligne['isActive'];
 
-//$_SESSION['mailConnexion'] = $mail;
+    $UserName = "".$ligne['firstName']." ".$ligne['lastName'];
 
         if($leMail == $_POST['femail'])
         {
-            if($leMDP == $_POST['fmdp'])
+            if($mdp == $leMDP)
             {
                 if($isActive == 0)
                 {
@@ -69,8 +73,9 @@ function ConnexionUser()
                 }
                 else
                 {
-                    $_SESSION['mailUtilisateur'] = $leMail;
-                    header('Location: index.php?inscription');
+                    $_SESSION['UserMail'] = $leMail;
+                    $_SESSION['UserName'] = $UserName;
+                    header('Location: index.php?calendar');
                 }
             }
             else

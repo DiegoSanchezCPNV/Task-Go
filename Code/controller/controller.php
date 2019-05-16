@@ -47,7 +47,7 @@ function showConnexion()
     }
     else
     {
-        if(isset($_SESSION['mailUtilisateur']))
+        if(isset($_SESSION['UserMail']))
         {
             //Zone de déconnexion
             session_destroy();
@@ -58,4 +58,10 @@ function showConnexion()
             require "view/view_Connexion.php";
         }
     }
+}
+
+
+function showCalendar()
+{
+    require "view/view_Calendar.php";
 }

@@ -26,6 +26,10 @@ try
     {
         require('view/view_Home.php');
     }
+    else if(isset($calendar))
+    {
+        showCalendar();
+    }
     else
     {
         require('view/view_Home.php');

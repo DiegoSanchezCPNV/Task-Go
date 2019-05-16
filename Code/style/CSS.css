@@ -31,7 +31,8 @@
 
 h1{
     margin-top: 5%;
-    text-align: center;
+    display: flex;
+    justify-content: center;
     font-size: 56px;
     font-family:Marker Felt, fantasy;
 }
@@ -56,7 +57,7 @@ a{
     box-sizing: border-box;
 }
 
-input[type=text], select, textarea {
+input[type=text],input[type=password], select, textarea {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
@@ -117,4 +118,75 @@ button:hover {
         width: 100%;
         margin-top: 0;
     }
+}
+
+.ErrorMessage{
+    margin-left: 45%;
+}
+
+.header{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+}
+
+.AHeader{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.AHeader:hover{
+    border: 5px solid #F62929;
+    border-radius: 6px;
+    background-color: #E96161;
+    font-weight: bold;
+}
+
+.containerCalendar
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    margin-right: 10%;
+    margin-left: 10%;
+}
+
+.DayCalendar{
+
+}
+
+.DayOfTheWeek{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.TodayDate{
+    background: #E96161;
+    border-radius: 20%;
+}
+
+.DayCurrentMonth
+{
+    width: 200px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: zoom-in;
+    background: #cccccc;
+}
+
+.DayOtherMonth
+{
+    width: 200px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: zoom-in;
+    background: #cccccc;
 }

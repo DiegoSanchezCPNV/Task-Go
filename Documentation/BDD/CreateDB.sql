@@ -23,7 +23,7 @@ USE `TaskAndGo` ;
 -- -----------------------------------------------------
 -- Table `TaskAndGo`.`DisplayMode`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `TaskAndGo`.`DisplayMode` (
+CREATE TABLE IF NOT EXISTS `TaskAndGo`.`displayMode` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(30) NOT NULL,
   PRIMARY KEY (`id`))
@@ -33,7 +33,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `TaskAndGo`.`User`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `TaskAndGo`.`User` (
+CREATE TABLE IF NOT EXISTS `TaskAndGo`.`user` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `firstName` VARCHAR(30) NOT NULL,
   `lastName` VARCHAR(30) NOT NULL,
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `TaskAndGo`.`User` (
   INDEX `id_Role_idx` (`id_DisplayMode` ASC) VISIBLE,
   CONSTRAINT `id_Display`
     FOREIGN KEY (`id_DisplayMode`)
-    REFERENCES `TaskAndGo`.`DisplayMode` (`id`)
+    REFERENCES `TaskAndGo`.`displayMode` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -58,7 +58,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `TaskAndGo`.`Meet`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `TaskAndGo`.`Meet` (
+CREATE TABLE IF NOT EXISTS `TaskAndGo`.`meet` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `description` VARCHAR(100) NOT NULL,
   `hour` DATETIME NOT NULL,
@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `TaskAndGo`.`Meet` (
   INDEX `id_User_idx` (`id_Meeting_User` ASC) VISIBLE,
   CONSTRAINT `id_Meeting_User`
     FOREIGN KEY (`id_Meeting_User`)
-    REFERENCES `TaskAndGo`.`User` (`id`)
+    REFERENCES `TaskAndGo`.`user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -79,7 +79,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `TaskAndGo`.`State`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `TaskAndGo`.`State` (
+CREATE TABLE IF NOT EXISTS `TaskAndGo`.`state` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(30) NOT NULL,
   PRIMARY KEY (`id`))
@@ -89,7 +89,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `TaskAndGo`.`Task`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `TaskAndGo`.`Task` (
+CREATE TABLE IF NOT EXISTS `TaskAndGo`.`task` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `description` VARCHAR(100) NOT NULL,
   `hour` DATETIME NOT NULL,
@@ -100,12 +100,12 @@ CREATE TABLE IF NOT EXISTS `TaskAndGo`.`Task` (
   INDEX `id_State_idx` (`id_State` ASC) VISIBLE,
   CONSTRAINT `id_Task_Userr`
     FOREIGN KEY (`id_Task_User`)
-    REFERENCES `TaskAndGo`.`User` (`id`)
+    REFERENCES `TaskAndGo`.`user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `id_State`
     FOREIGN KEY (`id_State`)
-    REFERENCES `TaskAndGo`.`State` (`id`)
+    REFERENCES `TaskAndGo`.`state` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
