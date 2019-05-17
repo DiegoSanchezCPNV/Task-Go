@@ -2,7 +2,7 @@
 /**
  * Created by PhpStorm.
  * User: Diego.SANCHEZ
- * Date: 14.05.2019
+ * Date: 2019
  * Time: 08:41
  */
 require_once('template.php');
@@ -11,6 +11,7 @@ require_once('template.php');
 <h1>Calendrier</h1>
 
 <?php
+//https://codes-sources.commentcamarche.net/source/42671-calendrier-simple-facilement-modifiable-affichage-complet
 // Récuperation des variables passées, on donne soit année; mois; année+mois
 if(!isset($_GET['mois'])) $num_mois = date("n"); else $num_mois = $_GET['mois'];
 if(!isset($_GET['annee'])) $num_an = date("Y"); else $num_an = $_GET['annee'];
@@ -55,13 +56,26 @@ for($i=0;$i<6;$i++) {
     echo'</tr>';
 
     for($i=0;$i<6;$i++) {
+        //<a href="index.php?SelectedDay"></a>
+        /*
+         *  echo "<td ".(($num_mois == date("n") && $num_an == date("Y") && $tab_cal[$i][$j] == date("j"))?' class="TodayDate"':null).">
+                <div class='DayCurrentMonth'>".((strpos($tab_cal[$i][$j],"*")!==false)?str_replace("*","",$tab_cal[$i][$j]).'</div>':$tab_cal[$i][$j])."</td>";
+         */
         echo "<tr class='DayCalendar'>";
         for($j=0;$j<7;$j++)
         {
-            echo "<td".(($num_mois == date("n") && $num_an == date("Y") && $tab_cal[$i][$j] == date("j"))?' class="TodayDate"':null).">
-                <div class='DayCurrentMonth'>".((strpos($tab_cal[$i][$j],"*")!==false)?str_replace("*","",$tab_cal[$i][$j]).'</div>':$tab_cal[$i][$j])."</td>";
+            $DayWanted = $tab_cal[$i][$j];
+            $monthWanted = $num_mois;
+            $yearWanted = $num_an;
+
+            echo "<td ".(($num_mois == date("n") && $num_an == date("Y") && $tab_cal[$i][$j] == date("j"))?' class="TodayDate"':null).">
+                <a class='DayCurrentMonth' href='index.php?SelectedDay&day=$DayWanted&month=$monthWanted&year=$yearWanted'>".((strpos($tab_cal[$i][$j],"*")!==false)?str_replace("*","",$tab_cal[$i][$j]).'</a>':$tab_cal[$i][$j])."</td>";
+            //echo  $tab_cal[0][0];
         }
         echo "</tr>";
     }
     ?>
 </table>
+
+
+

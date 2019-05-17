@@ -2,7 +2,7 @@
 /**
  * Created by PhpStorm.
  * User: Diego.SANCHEZ
- * Date: 14.05.2019
+ * Date: 2019
  * Time: 08:41
  */
 require_once('controller/controller.php');
@@ -26,6 +26,10 @@ try
     {
         session_destroy();
         require('view/view_Home.php');
+    }
+    else if (isset($SelectedDay))
+    {
+        showSelectedDay();
     }
     else if(isset($MyTaskMeeting))
     {

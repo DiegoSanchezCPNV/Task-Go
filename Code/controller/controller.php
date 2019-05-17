@@ -2,7 +2,7 @@
 /**
  * Created by PhpStorm.
  * User: Diego.SANCHEZ
- * Date: 14.05.2019
+ * Date: 2019
  * Time: 08:44
  */
 
@@ -69,4 +69,9 @@ function showCalendar()
 function showMyTaskMeeting()
 {
     require "view/view_MyTaskMeeting.php";
+}
+
+function showSelectedDay()
+{
+    require "view/view_SelectedDay.php";
 }

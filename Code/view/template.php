@@ -2,10 +2,9 @@
 /**
  * Created by PhpStorm.
  * User: Diego.SANCHEZ
- * Date: 14.05.2019
+ * Date: 2019
  * Time: 09:11
  */
-
 ?>
 <html>
     <head>
