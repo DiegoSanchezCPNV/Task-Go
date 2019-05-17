@@ -45,8 +45,8 @@ for($i=0;$i<6;$i++) {
 ?>
 
 <table class="containerCalendar">
-    <tr><td colspan="7" align="center"><a href="index.php?calendar&mois=<?php echo $num_mois-1; ?>&amp;annee=<?php echo $num_an; ?>"><<</a>&nbsp;&nbsp;<?php echo $tab_mois[$num_mois];  ?>&nbsp;&nbsp;<a href="index.php?calendar&mois=<?php echo $num_mois+1; ?>&amp;annee=<?php echo $num_an; ?>">>></a></td></tr>
-    <tr><td colspan="7" align="center"><a href="index.php?calendar&mois=<?php echo $num_mois; ?>&amp;annee=<?php echo $num_an-1; ?>"><<</a>&nbsp;&nbsp;<?php echo $num_an;  ?>&nbsp;&nbsp;<a href="index.php?calendar&mois=<?php echo $num_mois; ?>&amp;annee=<?php echo $num_an+1; ?>">>></a></td></tr>
+    <tr><td colspan="7" align="center"><a href="index.php?calendar&mois=<?php echo $num_mois-1; ?>&amp;annee=<?php echo $num_an; ?>"><img src="image/ArrowLeft.png" width="15px" height="15px"></a>&nbsp;&nbsp;<?php echo $tab_mois[$num_mois];  ?>&nbsp;&nbsp;<a href="index.php?calendar&mois=<?php echo $num_mois+1; ?>&amp;annee=<?php echo $num_an; ?>"><img src="image/ArrowRight.png"  width="15px" height="15px"></a></td></tr>
+    <tr><td colspan="7" align="center"><a href="index.php?calendar&mois=<?php echo $num_mois; ?>&amp;annee=<?php echo $num_an-1; ?>"><img src="image/ArrowLeft.png"  width="15px" height="15px"></a>&nbsp;&nbsp<?php echo $num_an;  ?>&nbsp;&nbsp;<a href="index.php?calendar&mois=<?php echo $num_mois; ?>&amp;annee=<?php echo $num_an+1; ?>"><img src="image/ArrowRight.png"  width="15px" height="15px"></a></td></tr>
     <?php
     echo'<tr>';
     for($i = 1; $i <= 7; $i++){

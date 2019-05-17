@@ -156,19 +156,15 @@ button:hover {
     margin-left: 10%;
 }
 
-.DayCalendar{
-
-}
-
 .DayOfTheWeek{
     margin-left: 10px;
     margin-right: 10px;
 }
 .TodayDate{
-    background: #E96161;
-    border-radius: 20%;
-}
+    color: green;
 
+    font-weight: bold;
+}
 .DayCurrentMonth
 {
     width: 200px;
@@ -180,13 +176,3 @@ button:hover {
     background: #cccccc;
 }
 
-.DayOtherMonth
-{
-    width: 200px;
-    height: 150px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: zoom-in;
-    background: #cccccc;
-}

@@ -65,3 +65,8 @@ function showCalendar()
 {
     require "view/view_Calendar.php";
 }
+
+function showMyTaskMeeting()
+{
+    require "view/view_MyTaskMeeting.php";
+}

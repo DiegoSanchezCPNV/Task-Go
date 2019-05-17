@@ -19,7 +19,7 @@
                 <?php if(isset($_SESSION['UserMail']))
                 {
                     echo "<a href=\"?calendar\" class='AHeader'>Calendrier de ".@$_SESSION['UserName']."</a>";
-                    echo "<a href=\"?calendar\" class='AHeader'>Mes tâches et rendez-vous</a>";
+                    echo "<a href=\"?MyTaskMeeting\" class='AHeader'>Mes tâches et rendez-vous</a>";
                     echo "<a href=\"?calendar\" class='AHeader'>Paramétrage</a>";
                     echo "<a href=\"?connexion\" class='AHeader'>Se déconnecter</a>";
                 }

@@ -24,7 +24,12 @@ try
     }
     else if(isset($accueilVisiteur))
     {
+        session_destroy();
         require('view/view_Home.php');
+    }
+    else if(isset($MyTaskMeeting))
+    {
+        showMyTaskMeeting();
     }
     else if(isset($calendar))
     {
@@ -32,6 +37,7 @@ try
     }
     else
     {
+        session_destroy();
         require('view/view_Home.php');
     }
 }
