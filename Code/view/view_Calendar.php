@@ -2,8 +2,7 @@
 /**
  * Created by PhpStorm.
  * User: Diego.SANCHEZ
- * Date: 2019
- * Time: 08:41
+ * Date: Mai 2019
  */
 require_once('template.php');
 ?>
@@ -71,9 +70,11 @@ for($i=0;$i<6;$i++) {
             echo "<td ".(($num_mois == date("n") && $num_an == date("Y") && $tab_cal[$i][$j] == date("j"))?' class="TodayDate"':null).">
                 <a class='DayCurrentMonth' href='index.php?SelectedDay&day=$DayWanted&month=$monthWanted&year=$yearWanted'>".((strpos($tab_cal[$i][$j],"*")!==false)?str_replace("*","",$tab_cal[$i][$j]).'</a>':$tab_cal[$i][$j])."</td>";
             //echo  $tab_cal[0][0];
+            //$_SESSION['DayWanted'] = $DayWanted;
         }
         echo "</tr>";
     }
+
     ?>
 </table>
 

@@ -68,10 +68,39 @@ function showCalendar()
 
 function showMyTaskMeeting()
 {
+    $resultatsMeet = ShowAllMeet();
+    $resultatstask = ShowAllTask();
     require "view/view_MyTaskMeeting.php";
 }
 
 function showSelectedDay()
 {
+    $day = $_GET['day'];
+    $month = $_GET['month'];
+    $year = $_GET['year'];
+
+    $resultatsTask = ShowTask($day,$month,$year);
+    $resultatsMeet = ShowMeet($day,$month,$year);
     require "view/view_SelectedDay.php";
+}
+
+function showAddMeetForm()
+{
+    require "view/view_AddMeet.php";
+}
+function showAddMeet()
+{
+    $date = $_GET['date'];
+    CreationMeet($date);
+    require "view/view_Calendar.php";
+}
+
+function showAddTaskForm()
+{
+    require "view/view_AddTask.php";
+}
+function showAddTask()
+{
+    CreationTask();
+    header('Location: index.php?$calendar&add=ok');
 }

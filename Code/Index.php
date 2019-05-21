@@ -29,11 +29,27 @@ try
     }
     else if (isset($SelectedDay))
     {
-        showSelectedDay();
+       showSelectedDay();
     }
     else if(isset($MyTaskMeeting))
     {
         showMyTaskMeeting();
+    }
+    else if(isset($addMeetForm))
+    {
+        showAddMeetForm();
+    }
+    else if(isset($addMeet))
+    {
+        showAddMeet();
+    }
+    else if(isset($addTaskForm))
+    {
+        showAddTaskForm();
+    }
+    else if(isset($addTask))
+    {
+        showAddTask();
     }
     else if(isset($calendar))
     {

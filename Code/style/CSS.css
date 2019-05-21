@@ -57,7 +57,7 @@ a{
     box-sizing: border-box;
 }
 
-input[type=text],input[type=password], select, textarea {
+input, select, textarea {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
@@ -174,4 +174,30 @@ button:hover {
     align-items: center;
     background: #cccccc;
 }
+
+.Table
+{
+    background-color: #f2f2f2;
+    display: flex;
+    justify-content: center;
+    margin-right: 20%;
+    margin-left: 20%;
+}
+.TableName
+{
+    background-color: black;
+    color: snow;
+}
+.TableTR
+{
+    background-color: #E96161;
+}
+
+.Image
+{
+   margin-top: 16px;
+    width: 40px;
+    height: 40px;
+}
+
 
