@@ -44,10 +44,10 @@ require_once('template.php');
     <?php foreach (@$resultatstask as $resultat) :?>
         <!-- Affichage des résultats de la BD -->
         <tr class="TableTR">
-            <td><?=$resultat['description']?></td>
-            <td><?=$resultat['hour'];?></td>
-            <td><?=$resultat['id_Task_User'];?></td>
-            <td><?=$resultat['id_State'];?></td>
+            <td><?=$resultat['Description']?></td>
+            <td><?=$resultat['DateEtHeure'];?></td>
+            <td><?=$resultat['Propriétaire'];?></td>
+            <td><?=$resultat['Etat'];?></td>
         </tr>
     <?php    endforeach;    ?>
 

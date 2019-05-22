@@ -154,7 +154,7 @@ $date = $_GET['year']."-".$_GET['month']."-".$_GET['day'];
 </table>
 
 
-<h1>Tâches&nbsp<a href="?addTaskForm"><img class="Image" src="image/add.png"></a></h1>
+<h1>Tâches&nbsp<a href="?addTaskForm&date=<?= $date?>""><img class="Image" src="image/add.png"></a></h1>
 <table class="Table">
     <tr class="TableName">
         <?php
@@ -168,10 +168,10 @@ $date = $_GET['year']."-".$_GET['month']."-".$_GET['day'];
     <?php foreach (@$resultatsTask as $resultat) :?>
         <!-- Affichage des résultats de la BD -->
         <tr class="TableTR">
-            <td><?=$resultat['description']?></td>
-            <td><?=$resultat['hour'];?></td>
-            <td><?=$resultat['id_Task_User'];?></td>
-            <td><?=$resultat['id_State'];?></td>
+            <td><?=$resultat['Description']?></td>
+            <td><?=$resultat['DateEtHeure'];?></td>
+            <td><?=$resultat['Propriétaire'];?></td>
+            <td><?=$resultat['Etat'];?></td>
         </tr>
     <?php    endforeach;    ?>
 

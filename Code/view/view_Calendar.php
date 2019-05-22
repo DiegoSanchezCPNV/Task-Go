@@ -12,6 +12,7 @@ require_once('template.php');
 <?php
 //https://codes-sources.commentcamarche.net/source/42671-calendrier-simple-facilement-modifiable-affichage-complet
 // Récuperation des variables passées, on donne soit année; mois; année+mois
+if(!isset($_GET['jour'])) $num_jour = date("j"); else $num_jour = $_GET['jour'];
 if(!isset($_GET['mois'])) $num_mois = date("n"); else $num_mois = $_GET['mois'];
 if(!isset($_GET['annee'])) $num_an = date("Y"); else $num_an = $_GET['annee'];
 
@@ -42,7 +43,16 @@ for($i=0;$i<6;$i++) {
         elseif($t == 1) { $tab_cal[$i][$j] = "*".($int_nbjAV-($int_premj-($j+1))+1); } // on a pas encore mis les num du mois, on met ceux de celui d'avant
     }
 }
-?>
+$_SESSION['test']=0;
+$GLOBALS['a']= 1;
+$GLOBALS['b']=2;
+//Affichage Mois
+if($_SESSION['test'] == 1)
+    {
+        ?>
+
+
+
 
 <table class="containerCalendar">
     <tr><td colspan="7" align="center"><a href="index.php?calendar&mois=<?php echo $num_mois-1; ?>&amp;annee=<?php echo $num_an; ?>"><img src="image/ArrowLeft.png" width="15px" height="15px"></a>&nbsp;&nbsp;<?php echo $tab_mois[$num_mois];  ?>&nbsp;&nbsp;<a href="index.php?calendar&mois=<?php echo $num_mois+1; ?>&amp;annee=<?php echo $num_an; ?>"><img src="image/ArrowRight.png"  width="15px" height="15px"></a></td></tr>
@@ -74,9 +84,58 @@ for($i=0;$i<6;$i++) {
         }
         echo "</tr>";
     }
+    echo "</table>";
+ }
+//Affichage Semaine
+else if($_SESSION['test'] == 0)
+{
+
+
 
     ?>
-</table>
+<table class="containerCalendar">
+    <tr><td colspan="7" align="center">
+            <a href="index.php?calendar&jours=<?php echo $GLOBALS['a']--; $GLOBALS['b']--; ?>&amp;annee=<?php echo $num_an; ?>"><img src="image/ArrowLeft.png" width="15px" height="15px">
+                </a>&nbsp;&nbsp;<?php echo "Semaine"  ?>&nbsp;&nbsp;
+            <a href="index.php?calendar&jours=<?php echo $GLOBALS['a']= $GLOBALS['a'] +1; echo " - "; echo $GLOBALS['b']++;   ?>&amp;annee=<?php echo $num_an; ?>"><img src="image/ArrowRight.png"  width="15px" height="15px"></a></td></tr>
+    <?php
+    var_dump($num_jour);
+    var_dump($GLOBALS['a']);
+    echo'<tr>';
+    for($i = 1; $i <= 7; $i++){
+        echo('<td>'.$tab_jours[$i].'</td>');
+    }
+    echo'</tr>';
+
+
+    for($i=$GLOBALS['a'];$i<$GLOBALS['b'];$i++) {
+
+        echo "<tr class='DayCalendar'>";
+        for($j=0;$j<7;$j++)
+        {
+            $DayWanted = $tab_cal[$i][$j];
+            $monthWanted = $num_mois;
+            $yearWanted = $num_an;
+
+            $first = reset($tab_cal);
+            $last = end($tab_cal);
+
+            var_dump($tab_cal);
+
+
+           // $key = array_search($num_jour, $tab_cal);
+            //var_dump($key);
+
+            // tab_cal[Semaine][Jour de la semaine]
+
+            echo "<td ".(($num_mois == date("n") && $num_an == date("Y") && $tab_cal[$i][$j] == date("j"))?' class="TodayDate"':null).">
+                <a class='DayCurrentMonth' href='index.php?SelectedDay&day=$DayWanted&month=$monthWanted&year=$yearWanted'>".((strpos($tab_cal[$i][$j],"*")!==false)?str_replace("*","",$tab_cal[$i][$j]).'</a>':$tab_cal[$i][$j])."</td>";
+        }
+        echo "</tr>";
+    }
+    echo "</table>";
+}
+?>
 
 
 

@@ -106,7 +106,7 @@ function ShowTask($day,$month,$year)
     $date = $year."-".$month."-".$day."";
 
 
-    $requete = "SELECT id, description, hour, id_Task_User, id_State FROM task where hour LIKE '".$date."%';";
+    $requete = "SELECT id, description as Description, hour as DateEtHeure, id_Task_User as Propriétaire, id_State as Etat FROM task where hour LIKE '".$date."%';";
 
     $resultats = $connexion->query($requete);
 
@@ -150,11 +150,16 @@ function CreationMeet($date)
 }
 
 
-function CreationTask()
+function CreationTask($date)
 {
     $connexion = ConnexionDB();
 
-    $query = $connexion->prepare("insert into meet (id, description, hour, term, place, comment, id_Meeting_User) values (null,'Entretien','2019-05-18','01:30:00','Nespresso','Ne pas oublier CV',9);");
+    extract($_POST);
+
+    $Hour = $date." ".$ftime;
+
+    $query = $connexion->prepare("insert into task (id, description, hour, id_Task_User, id_State) 
+                values (null,'".$fdesc."','".$Hour."','".$_SESSION['UserId']."',1);");
 
     $query->execute();
 }
@@ -175,7 +180,7 @@ function ShowAllTask()
 {
     $connexion = ConnexionDB();
 
-    $requete = "SELECT id, description, hour, id_Task_User, id_State FROM task where id_Task_User = '".$_SESSION['UserId']."';";
+    $requete = "SELECT task.id, description as Description, hour as DateEtHeure, user.firstName as Propriétaire, id_State as Etat FROM task inner join user on task.id_Task_User = user.id where id_Task_User = '".$_SESSION['UserId']."';";
 
     $resultatstask = $connexion->query($requete);
 

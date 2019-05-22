@@ -101,6 +101,7 @@ function showAddTaskForm()
 }
 function showAddTask()
 {
-    CreationTask();
-    header('Location: index.php?$calendar&add=ok');
+    $date = $_GET['date'];
+    CreationTask($date);
+    require "view/view_Calendar.php";
 }
