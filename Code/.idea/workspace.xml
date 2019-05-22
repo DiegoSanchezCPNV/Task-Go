@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c328a0e-7cb2-456e-a161-c4dd2cd9dec1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/controller.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/model.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/model.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/view_AddTask.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/view_AddTask.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/view_Calendar.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/view_Calendar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/view_MyTaskMeeting.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/view_MyTaskMeeting.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/view_SelectedDay.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/view_SelectedDay.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,7 +34,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/view/view_SelectedDay.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2482">
+            <state relative-caret-position="2467">
               <caret line="146" column="51" selection-start-line="146" selection-start-column="51" selection-end-line="146" selection-end-column="51" />
             </state>
           </provider>
@@ -57,8 +52,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="13" column="6" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
+            <state relative-caret-position="-510">
+              <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -93,14 +88,14 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/view/view_Calendar.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="88" column="19" lean-forward="true" selection-start-line="88" selection-start-column="19" selection-end-line="88" selection-end-column="19" />
+            <state relative-caret-position="-136">
+              <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
               <folding>
                 <element signature="e#2277#4425#0#PHP" />
-                <element signature="e#4829#4835#0#HTML" expanded="true" />
-                <element signature="e#4835#4841#0#HTML" expanded="true" />
-                <element signature="e#4865#4871#0#HTML" expanded="true" />
-                <element signature="e#4871#4877#0#HTML" expanded="true" />
+                <element signature="e#5152#5158#0#HTML" expanded="true" />
+                <element signature="e#5158#5164#0#HTML" expanded="true" />
+                <element signature="e#5188#5194#0#HTML" expanded="true" />
+                <element signature="e#5194#5200#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -247,12 +242,12 @@
       <workItem from="1558097478714" duration="291000" />
       <workItem from="1558418657340" duration="26308000" />
       <workItem from="1558450496183" duration="20000" />
-      <workItem from="1558505561282" duration="9074000" />
+      <workItem from="1558505561282" duration="11521000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="99054000" />
+    <option name="totallyTimeSpent" value="101501000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -263,7 +258,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49840087" visible="true" weight="0.22751896" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49840087" weight="0.22751896" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -313,13 +308,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/view/view_SelectedDay.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2482">
-          <caret line="146" column="51" selection-start-line="146" selection-start-column="51" selection-end-line="146" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controller/controller.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1122">
@@ -364,21 +352,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/model/model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="13" column="6" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
+        <state relative-caret-position="-510">
+          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/view_SelectedDay.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2467">
+          <caret line="146" column="51" selection-start-line="146" selection-start-column="51" selection-end-line="146" selection-end-column="51" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/view/view_Calendar.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="88" column="19" lean-forward="true" selection-start-line="88" selection-start-column="19" selection-end-line="88" selection-end-column="19" />
+        <state relative-caret-position="-136">
+          <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
           <folding>
             <element signature="e#2277#4425#0#PHP" />
-            <element signature="e#4829#4835#0#HTML" expanded="true" />
-            <element signature="e#4835#4841#0#HTML" expanded="true" />
-            <element signature="e#4865#4871#0#HTML" expanded="true" />
-            <element signature="e#4871#4877#0#HTML" expanded="true" />
+            <element signature="e#5152#5158#0#HTML" expanded="true" />
+            <element signature="e#5158#5164#0#HTML" expanded="true" />
+            <element signature="e#5188#5194#0#HTML" expanded="true" />
+            <element signature="e#5194#5200#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>

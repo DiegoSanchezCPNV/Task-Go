@@ -43,9 +43,27 @@ for($i=0;$i<6;$i++) {
         elseif($t == 1) { $tab_cal[$i][$j] = "*".($int_nbjAV-($int_premj-($j+1))+1); } // on a pas encore mis les num du mois, on met ceux de celui d'avant
     }
 }
-$_SESSION['test']=0;
-$GLOBALS['a']= 1;
-$GLOBALS['b']=2;
+$_SESSION['test']=1;
+
+//$key = array_search($num_jour, $tab_cal);
+//var_dump($key);
+
+
+$GLOBALS['a']= 3;
+$GLOBALS['b']=4;
+/*
+if(in_array($num_jour, $tab_cal))
+{
+    $GLOBALS['a']= 1;
+    $GLOBALS['b']=2;
+}
+else
+{
+    $GLOBALS['a']= 3;
+    $GLOBALS['b']=4;
+}*/
+
+
 //Affichage Mois
 if($_SESSION['test'] == 1)
     {
@@ -101,6 +119,7 @@ else if($_SESSION['test'] == 0)
     <?php
     var_dump($num_jour);
     var_dump($GLOBALS['a']);
+
     echo'<tr>';
     for($i = 1; $i <= 7; $i++){
         echo('<td>'.$tab_jours[$i].'</td>');
@@ -117,14 +136,13 @@ else if($_SESSION['test'] == 0)
             $monthWanted = $num_mois;
             $yearWanted = $num_an;
 
-            $first = reset($tab_cal);
+            /*$first = reset($tab_cal);
             $last = end($tab_cal);
 
-            var_dump($tab_cal);
+            var_dump($tab_cal);*/
 
 
-           // $key = array_search($num_jour, $tab_cal);
-            //var_dump($key);
+
 
             // tab_cal[Semaine][Jour de la semaine]
 
