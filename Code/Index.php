@@ -55,6 +55,39 @@ try
     {
         showCalendar();
     }
+    else if(isset($DeleteUser))
+    {
+        showDeleteUser();
+    }
+    else if(isset($DeleteMeet))
+    {
+        showDeleteMeet();
+    }
+    else if(isset($DeleteTask))
+    {
+        showDeleteTask();
+    }
+    else if(isset($ModifyTask))
+    {
+        showModifyTask();
+    }
+    else if(isset($ModifyMeet))
+    {
+        showModifyMeet();
+    }
+    else if(isset($settings))
+    {
+        showSettings();
+    }
+    else if(isset($valid))
+    {
+        $user = $_GET['user'];
+        showValid($user);
+    }
+    else if(isset($userList))
+    {
+        showUserList();
+    }
     else
     {
         session_destroy();

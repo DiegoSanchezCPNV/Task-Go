@@ -57,6 +57,14 @@ a{
     box-sizing: border-box;
 }
 
+input[type="radio"]
+{
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+
 input, select, textarea {
     width: 100%;
     padding: 12px;
@@ -200,4 +208,50 @@ button:hover {
     height: 40px;
 }
 
+.TextTooLong
+{
+    display:inline-block;
+    text-align: center;
+}
 
+.radio
+{
+    display:inline-block;
+    padding-left: 30px;
+    padding-right: 30px;
+    cursor: pointer;
+}
+
+.col-40 {
+    float: left;
+    width: 50%;
+    margin-top: 6px;
+}
+
+.col-60 {
+    float: left;
+    width: 50%;
+    margin-top: 6px;
+}
+
+.reveal-if-active
+{
+    width: 100px;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+}
+
+input#fchoixNon:checked ~ .reveal-if-active{
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+}
+
+input#fchoixOui:checked ~ .reveal-if-active{
+    opacity: 1;
+    max-height: 100px; /* little bit of a magic number :( */
+    overflow: visible;
+    display: inline-block;
+    /*document.getElementById("ladder-meters").required = this.checked ;*/
+}

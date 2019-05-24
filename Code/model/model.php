@@ -2,8 +2,7 @@
 /**
  * Created by PhpStorm.
  * User: Diego.SANCHEZ
- * Date: 2019
- * Time: 08:45
+ * Date: mai 2019
  */
 
 function ConnexionDB()
@@ -30,6 +29,7 @@ function CreateAccount()
     $emailAtest =$connexion->query($requete);
     $ligne = $emailAtest->fetch();
     $emailDansBdd = $ligne['email'];
+
     $mdp = sha1($fmdp);
 
     if($fmail == $emailDansBdd)
@@ -37,10 +37,12 @@ function CreateAccount()
         $_SESSION['mailConnexion'] = $emailDansBdd;
         header('Location: index.php?inscription&erreur=1');
     }
-
-    $query = $connexion->prepare("insert into user (id, firstName, lastName, password, email, reminder, termBefore, id_DisplayMode, displayNumber, isAdmin, isActive) 
+    else
+    {
+        $query = $connexion->prepare("insert into user (id, firstName, lastName, password, email, reminder, termBefore, id_DisplayMode, displayNumber, isAdmin, isActive) 
                                             values (null, '".$fname."', '".$fsurname."', '".$mdp."', '".$fmail."', 0, 0, 1,5,0,0);");
-    $query->execute();
+        $query->execute();
+    }
 }
 
 function ConnexionUser()
@@ -59,6 +61,7 @@ function ConnexionUser()
     $leMail = $ligne['email'];
     $mdp = $ligne['password'];
     $id = $ligne['id'];
+    $Admin = $ligne['isAdmin'];
 
     $isActive = $ligne['isActive'];
 
@@ -74,10 +77,20 @@ function ConnexionUser()
                 }
                 else
                 {
-                    $_SESSION['UserMail'] = $leMail;
-                    $_SESSION['UserName'] = $UserName;
-                    $_SESSION['UserId']= $id;
-                    header('Location: index.php?calendar');
+                    if($Admin == 1)
+                    {
+                        $_SESSION['UserName'] = "Admin";
+                        $_SESSION['UserId']= $id;
+                        header('Location: index.php?userList');
+                    }
+                    else
+                    {
+                        $_SESSION['UserMail'] = $leMail;
+                        $_SESSION['UserName'] = $UserName;
+                        $_SESSION['UserId']= $id;
+                        header('Location: index.php?calendar');
+                    }
+
                 }
             }
             else
@@ -106,7 +119,10 @@ function ShowTask($day,$month,$year)
     $date = $year."-".$month."-".$day."";
 
 
-    $requete = "SELECT id, description as Description, hour as DateEtHeure, id_Task_User as Propriétaire, id_State as Etat FROM task where hour LIKE '".$date."%';";
+    $requete = "SELECT task.id, description as Description, hour as DateEtHeure, user.firstname as Propriétaire, state.name as Etat FROM task 
+                inner join user on task.id_Task_User = user.id 
+                inner join state on task.id_State = state.id 
+                where hour LIKE '".$date."%';";
 
     $resultats = $connexion->query($requete);
 
@@ -141,10 +157,13 @@ function CreationMeet($date)
 
     extract($_POST);
 
-    $Hour = $date." ".$ftime;
+    $Hour = $date." ".$ftime.":00";
+
+    $resultDesc = addslashes($fdesc);
+    $resultComment = addslashes($fcomment);
 
     $query = $connexion->prepare("insert into meet (id, description, hour, term, place, comment, id_Meeting_User) 
-            values (null,'".$fdesc."','".$Hour."','".$fterm."','".$fplace."','".$fcomment."','".$_SESSION['UserId']."');");
+            values (null,'".$resultDesc."','".$Hour."','".$fterm."','".$fplace."','".$resultComment."','".$_SESSION['UserId']."');");
 
     $query->execute();
 }
@@ -158,8 +177,10 @@ function CreationTask($date)
 
     $Hour = $date." ".$ftime;
 
+    $resultDesc = addslashes($fdesc);
+
     $query = $connexion->prepare("insert into task (id, description, hour, id_Task_User, id_State) 
-                values (null,'".$fdesc."','".$Hour."','".$_SESSION['UserId']."',1);");
+                values (null,'".$resultDesc."','".$Hour."','".$_SESSION['UserId']."',1);");
 
     $query->execute();
 }
@@ -180,9 +201,156 @@ function ShowAllTask()
 {
     $connexion = ConnexionDB();
 
-    $requete = "SELECT task.id, description as Description, hour as DateEtHeure, user.firstName as Propriétaire, id_State as Etat FROM task inner join user on task.id_Task_User = user.id where id_Task_User = '".$_SESSION['UserId']."';";
+    $requete = "SELECT task.id, description as Description, hour as DateEtHeure, user.firstName as Propriétaire, state.name as Etat FROM task 
+                inner join user on task.id_Task_User = user.id 
+                inner join state on task.id_State = state.id
+                where id_Task_User = '".$_SESSION['UserId']."';";
 
     $resultatstask = $connexion->query($requete);
 
     return $resultatstask;
+}
+
+function UserList()
+{
+
+    $connexion = ConnexionDB();
+
+    $requete = "SELECT id,firstname as Prénom, lastname as Nom, email, isActive as CompteActif FROM user where id != '".$_SESSION['UserId']."';";
+
+    $resultats = $connexion->query($requete);
+
+    return $resultats;
+}
+
+function DeleteUser($id)
+{
+    $connexion = ConnexionDB();
+
+    $query = $connexion->prepare("delete from user where id = '".$id."'");
+
+    $query->execute();
+}
+
+function DeleteMeet($id)
+{
+    $connexion = ConnexionDB();
+
+    $query = $connexion->prepare("delete from meet where id = '".$id."'");
+
+    $query->execute();
+}
+
+function DeleteTask($id)
+{
+    $connexion = ConnexionDB();
+
+    $query = $connexion->prepare("delete from task where id = '".$id."'");
+
+    $query->execute();
+}
+
+function ShowTaskModif($id)
+{
+    $connexion = ConnexionDB();
+
+    $requete = "SELECT id,description, hour, id_Task_User, id_State FROM task where id = '".$id."';";
+
+    $resultats = $connexion->query($requete);
+
+    return $resultats;
+}
+function ShowMeetModif($id)
+{
+    $connexion = ConnexionDB();
+
+    $requete = "SELECT id,description, hour, term, place, comment, id_Meeting_User FROM meet where id = '".$id."';";
+
+    $resultats = $connexion->query($requete);
+
+    return $resultats;
+}
+function ModifyMeet($id,$date,$desc,$hour,$term,$place,$comment)
+{
+    $connexion = ConnexionDB();
+
+    $Hour = $date." ".$hour;
+
+    $resultDesc = addslashes($desc);
+    $resultComment = addslashes($comment);
+
+    $query = $connexion->prepare("update meet set description = '".$resultDesc."', hour = '".$Hour."', 
+                                            term = '".$term."', place = '".$place."', comment = '".$resultComment."' where id = '".$id."'");
+
+    $query->execute();
+}
+
+function ModifyTask($id,$date,$desc,$hour,$state)
+{
+    $connexion = ConnexionDB();
+
+    $Hour = $date." ".$hour;
+
+    $resultDesc = addslashes($desc);
+
+    $query = $connexion->prepare("update task set description = '".$resultDesc."', hour = '".$Hour."', 
+                                            id_State = '".$state."' where id = '".$id."'");
+
+    $query->execute();
+}
+
+function ModifySettings($displayModeNumber,$choixVue,$choixRappel,$numberRappel)
+{
+    $connexion = ConnexionDB();
+
+    $query = $connexion->prepare("update user set reminder = '".$choixRappel."', termBefore = '".$numberRappel."', 
+                                    id_DisplayMode = '".$choixVue."', displayNumber = '".$displayModeNumber."' where id = '".$_SESSION['UserId']."'");
+
+    $query->execute();
+}
+/*
+function ShowSettingsModif()
+{
+    $connexion = ConnexionDB();
+
+    $requete = "SELECT reminder,description, hour, id_Task_User, id_State FROM task where id = '".$id."';";
+
+    $resultats = $connexion->query($requete);
+
+    return $resultats;
+}*/
+
+
+
+function mailValidation($mailUser)
+{
+    extract($_GET);
+
+    /*ini_set('SMTP','mail01.swisscenter.com');
+    ini_set('smtp_port',25);*/
+
+
+
+    // Envoi du mail
+    $to = $mailUser;
+
+    // Le message
+    $message = "http://taskandgo.mycpnv.ch/index.php?valid&user=$mailUser";
+
+    $sujet = "Voici votre lien afin de valider votre compte sur Task&Go. \r\n ";
+
+
+    // Dans le cas où nos lignes comportent plus de 120 caractères, nous les coupons en utilisant wordwrap()
+    $message = wordwrap($message, 120, "\r\n");
+
+    mail($to,$sujet,$message,"From: admin@taskandgo.mycpnv.ch");
+}
+
+function ValidUserAccount($user)
+{
+    $connexion = ConnexionDB();
+
+    $query = $connexion->prepare("update user set isActive = 1 where email = '".$user."'");
+
+    $query->execute();
 }

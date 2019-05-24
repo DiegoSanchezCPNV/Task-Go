@@ -107,25 +107,29 @@ if($_SESSION['test'] == 1)
 //Affichage Semaine
 else if($_SESSION['test'] == 0)
 {
-
+//mettre test et addition ici
+    var_dump($GLOBALS['a']);
+    $GLOBALS['a']= $GLOBALS['a'] +1;
+    var_dump($GLOBALS['a']);
 
 
     ?>
 <table class="containerCalendar">
     <tr><td colspan="7" align="center">
-            <a href="index.php?calendar&jours=<?php echo $GLOBALS['a']--; $GLOBALS['b']--; ?>&amp;annee=<?php echo $num_an; ?>"><img src="image/ArrowLeft.png" width="15px" height="15px">
+            <!--<a href="index.php?calendar&jours=<?php //echo $GLOBALS['a']--; $GLOBALS['b']--; ?>&amp;annee=<?php //echo $num_an; ?>"><img src="image/ArrowLeft.png" width="15px" height="15px">-->
                 </a>&nbsp;&nbsp;<?php echo "Semaine"  ?>&nbsp;&nbsp;
-            <a href="index.php?calendar&jours=<?php echo $GLOBALS['a']= $GLOBALS['a'] +1; echo " - "; echo $GLOBALS['b']++;   ?>&amp;annee=<?php echo $num_an; ?>"><img src="image/ArrowRight.png"  width="15px" height="15px"></a></td></tr>
+            <a href="index.php?calendar&jours=<?php echo $GLOBALS['a']++; echo " - "; echo $GLOBALS['b']++;   ?>&amp;annee=<?php echo $num_an; ?>"><img src="image/ArrowRight.png"  width="15px" height="15px"></a></td></tr>
     <?php
     var_dump($num_jour);
     var_dump($GLOBALS['a']);
+
 
     echo'<tr>';
     for($i = 1; $i <= 7; $i++){
         echo('<td>'.$tab_jours[$i].'</td>');
     }
     echo'</tr>';
-
+    var_dump($tab_jours[$i]);
 
     for($i=$GLOBALS['a'];$i<$GLOBALS['b'];$i++) {
 

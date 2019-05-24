@@ -11,7 +11,7 @@ require_once('template.php');
 <h1>Connexion</h1>
 <?php if(@$_GET['erreur']==1){ ?><font color="#FF0000" class="ErrorMessage">Email ou mot de passe non valide</font><?php unset($_GET['erreur']);} ?>
 <?php if(@$_GET['erreur']==4){ ?><font color="#FF0000" class="ErrorMessage">Aucun compte créé avec cette adresse mail</font><?php unset($_GET['erreur']);} ?>
-<?php if(@$_GET['erreur']==2){ ?><font color="#FF0000" class="ErrorMessage">Veuillez valider votre adresse mail</font><?php unset($_GET['erreur']);} ?>
+<?php if(@$_GET['erreur']==2){ ?><font color="#FF0000" class="ErrorMessage">Veuillez valider votre adresse mail via votre boîte mail</font><?php unset($_GET['erreur']);} ?>
 <form method="POST" action="index.php?connexion" role="form" id="connexionForm" class="Formulaire">
     <div class="container">
         <div class="row">

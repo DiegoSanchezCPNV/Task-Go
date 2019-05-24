@@ -19,13 +19,19 @@
                 {
                     echo "<a href=\"?calendar\" class='AHeader'>Calendrier de ".@$_SESSION['UserName']."</a>";
                     echo "<a href=\"?MyTaskMeeting\" class='AHeader'>Mes tâches et rendez-vous</a>";
-                    echo "<a href=\"?calendar\" class='AHeader'>Paramétrage</a>";
+                    echo "<a href=\"?settings\" class='AHeader'>Paramétrage</a>";
+                    echo "<a href=\"?connexion\" class='AHeader'>Se déconnecter</a>";
+                }
+                else if(@$_SESSION['UserName'] == "Admin")
+                {
+                    echo "<a href=\"?userList\" class='AHeader'>Liste des utilisateurs</a>";
                     echo "<a href=\"?connexion\" class='AHeader'>Se déconnecter</a>";
                 }
                 else if(@$_SESSION['UserMail'] == null)
                 {
                     echo "<a href=\"?accueilVisiteur\" class='AHeader'>Accueil</a>";
                 }
+
                 ?>
             </ul>
 

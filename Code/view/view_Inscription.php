@@ -2,8 +2,7 @@
 /**
  * Created by PhpStorm.
  * User: Diego.SANCHEZ
- * Date: 2019
- * Time: 10:39
+ * Date: mai 2019
  */
 require_once('template.php');
 $special = 'àâäãçéèêëìîïòôöõùûüñ &*?!:;,\t#~"^¨%$£?²¤§%*()[]{}<>|\\/`\'';
@@ -64,7 +63,7 @@ $special = 'àâäãçéèêëìîïòôöõùûüñ &*?!:;,\t#~"^¨%$£?²¤§%
         </div>
         <div class="col-75">
             <input type="password" id="fmdp2" name="fmdp2" placeholder="Veuillez confirmer votre mot de passe"
-                   pattern="(?=.*?[#?!@$%^&*-])[a-zA-ZÀ-ž0-9\s-]+.{7,}"
+                   pattern="(?=.*?[#?!@${}£%^&*_-])[a-zA-ZÀ-ž0-9\s-]+.{7,}"
                    title="Le mot de passe doit contenir au minimum 8 caractères, dont des lettres en majuscule, miniscule, des chiffres et au moins caractère spécial" required>
         </div>
     </div><br>

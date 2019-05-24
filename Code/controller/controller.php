@@ -21,6 +21,8 @@ function showInscription()
             if($_POST['fmdp'] == $_POST['fmdp2'])
             {
                 CreateAccount();
+                $mailUser = $_POST['fmail'];
+                mailValidation($mailUser);
                 require "view/view_Connexion.php";
             }
             else
@@ -47,7 +49,7 @@ function showConnexion()
     }
     else
     {
-        if(isset($_SESSION['UserMail']))
+        if(isset($_SESSION['UserName']))
         {
             //Zone de déconnexion
             session_destroy();
@@ -104,4 +106,109 @@ function showAddTask()
     $date = $_GET['date'];
     CreationTask($date);
     require "view/view_Calendar.php";
+}
+
+function showUserList()
+{
+    $resultats = UserList();
+    require "view/view_UserList.php";
+}
+
+function showDeleteUser()
+{
+    $id = $_GET['ID'];
+    DeleteUser($id);
+    header('Location: index.php?userList');
+}
+
+function showDeleteMeet()
+{
+    $id = $_GET['ID'];
+    DeleteMeet($id);
+    require "view/view_Calendar.php";
+}
+
+function showDeleteTask()
+{
+    $id = $_GET['ID'];
+    DeleteTask($id);
+    require "view/view_Calendar.php";
+}
+
+function showModifyTask()
+{
+    if(isset($_POST['fdesc']))
+    {
+        $id = $_GET['ID'];
+        $date = $_GET['date'];
+        $desc = $_POST['fdesc'];
+        $hour = $_POST['ftime'];
+        $state = $_POST['fcat'];
+
+        ModifyTask($id,$date,$desc,$hour,$state);
+        require "view/view_Calendar.php";
+    }
+    else
+    {
+        if (isset($_GET['ID']))
+        {
+            $id = $_GET['ID'];
+            $resultats = ShowTaskModif($id);
+            require "view/view_ModifyTask.php";
+        }
+    }
+
+}
+
+function showModifyMeet()
+{
+    if(isset($_POST['fdesc']))
+    {
+        $id = $_GET['ID'];
+        $date = $_GET['date'];
+        $desc = $_POST['fdesc'];
+        $hour = $_POST['ftime'];
+        $term = $_POST['fterm'];
+        $place = $_POST['fplace'];
+        $comment = $_POST['fcomment'];
+
+        ModifyMeet($id,$date,$desc,$hour,$term,$place,$comment);
+        require "view/view_Calendar.php";
+    }
+    else
+    {
+        if (isset($_GET['ID']))
+        {
+            $id = $_GET['ID'];
+            $resultats = ShowMeetModif($id);
+            require "view/view_ModifyMeet.php";
+        }
+    }
+}
+
+function showSettings()
+{
+    //https://css-tricks.com/exposing-form-fields-radio-button-css/
+
+    if(isset($_POST['fnumber']))
+    {
+        $displayModeNumber = $_POST['fnumber'];
+        $choixVue = $_POST['fchoixVue'];
+        $choixRappel = $_POST['fchoix'];
+        $numberRappel = $_POST['fnumberRappel'];
+
+        ModifySettings($displayModeNumber,$choixVue,$choixRappel,$numberRappel);
+        require "view/view_Calendar.php";
+    }
+    else
+    {
+        //$resultats = ShowSettingsModif();
+        require "view/view_Settings.php";
+    }
+}
+
+function showValid($user)
+{
+    ValidUserAccount($user);
+    require "view/view_validation.php";
 }

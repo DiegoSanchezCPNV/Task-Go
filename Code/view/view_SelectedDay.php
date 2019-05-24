@@ -148,6 +148,12 @@ $date = $_GET['year']."-".$_GET['month']."-".$_GET['day'];
             <td><?=$resultat['Durée'];?></td>
             <td><?=$resultat['Lieu'];?></td>
             <td><?=$resultat['Commentaire'];?></td>
+            <td>
+                <a href="index.php?ModifyMeet&ID=<?=$resultat['id'];?>"><img src="/image/modify.png" width="15px" height="15px"></a>
+            </td>
+            <td>
+                <a href="index.php?DeleteMeet&ID=<?=$resultat['id'];?>"><img src="/image/delete.png" width="15px" height="15px"></a>
+            </td>
         </tr>
     <?php    endforeach;    ?>
 
@@ -172,6 +178,12 @@ $date = $_GET['year']."-".$_GET['month']."-".$_GET['day'];
             <td><?=$resultat['DateEtHeure'];?></td>
             <td><?=$resultat['Propriétaire'];?></td>
             <td><?=$resultat['Etat'];?></td>
+            <td>
+                <a href="index.php?ModifyTask&ID=<?=$resultat['id'];?>"><img src="/image/modify.png" width="15px" height="15px"></a>
+            </td>
+            <td>
+                <a href="index.php?DeleteTask&ID=<?=$resultat['id'];?>"><img src="/image/delete.png" width="15px" height="15px"></a>
+            </td>
         </tr>
     <?php    endforeach;    ?>
 
