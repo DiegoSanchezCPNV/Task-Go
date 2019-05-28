@@ -8,7 +8,7 @@
 require_once('template.php');
 ?>
 
-<h1>Mes tâches et rendez-vous</h1>
+<h1>Mes tâches et rendez-vous à venir</h1>
 <table class="Table">
     <tr class="TableName">
         <?php
@@ -21,11 +21,11 @@ require_once('template.php');
     </tr>
     <?php foreach (@$resultatsMeet as $resultat) :
         $date = date("Y-m-d h:i:s");
-        if($resultat['DateEtHeure'] >= $date){?>
+        if($resultat['Date'] >= $date){?>
         <!-- Affichage des résultats de la BD -->
         <tr class="TableTR">
             <td><?= mb_strimwidth($resultat['Description'],0,40,"...")?></td>
-            <td><?=$resultat['DateEtHeure'];?></td>
+            <td><?=$resultat['Date'];?></td>
             <td><?=$resultat['Durée'];?></td>
             <td><?=$resultat['Lieu'];?></td>
             <td><?= mb_strimwidth($resultat['Commentaire'],0,40, "...");?></td>
@@ -45,11 +45,11 @@ require_once('template.php');
     </tr>
     <?php foreach (@$resultatstask as $resultat) :
     $date = date("Y-m-d h:i:s");
-    if($resultat['DateEtHeure'] >= $date){?>
+    if($resultat['Date'] >= $date){?>
         <!-- Affichage des résultats de la BD -->
         <tr class="TableTR">
             <td><?=mb_strimwidth($resultat['Description'],0,40,"...")?></td>
-            <td><?=$resultat['DateEtHeure'];?></td>
+            <td><?=$resultat['Date'];?></td>
             <td><?=$resultat['Propriétaire'];?></td>
             <td><?=$resultat['Etat'];?></td>
         </tr>

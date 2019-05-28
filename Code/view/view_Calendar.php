@@ -5,6 +5,7 @@
  * Date: Mai 2019
  */
 require_once('template.php');
+require_once('model/model.php');
 ?>
 
 <h1>Calendrier</h1>
@@ -95,8 +96,137 @@ if($_SESSION['test'] == 1)
             $monthWanted = $num_mois;
             $yearWanted = $num_an;
 
+            $DayZ =$DayWanted;
+            $monthZ = $monthWanted;
+            $yearZ = $yearWanted;
+
+
+            if(strpos($DayZ, '*') !== false)
+            {
+                //1) supprimer l'étoile du string
+                $DayZ = str_replace("*","", $DayZ);
+
+                //2) Si plus grand que 20 faire mois -1
+                if($DayZ > 20)
+                {
+                    //Si on est au mois de janvier
+                    if($monthZ==1)
+                    {
+                        $monthZ= 12;
+                        $yearZ = $yearZ -1;
+
+                    }
+                    //si le mois est inférieur ou egal à 9 rajoute un 0 pour l'affichage du mois
+                    else if($monthZ<= 9)
+                    {
+                        $monthZ= $monthZ-1;
+                        $monthZ= "0".$monthZ;
+
+                    }
+                    else
+                    {
+                        $monthZ= $monthZ-1;
+
+                    }
+                }
+                else
+                {
+                    if($monthZ== 12)
+                    {
+                        $monthZ= 1;
+                        $yearZ = $yearZ +1;
+                        $DayZ = "0".$DayZ;
+                        $monthZ= "0".$monthZ;
+                        $GLOBALS['$DayZ'] = $DayZ;
+                        $GLOBALS['$monthZ'] = $monthZ;
+                        $GLOBALS['$yearZ']= $yearZ;
+                    }
+                    else if($monthZ> 0 && $monthZ<= 8)
+                    {
+                        $monthZ= $monthZ+1;
+                        $DayZ = "0".$DayZ;
+                        $monthZ= "0".$monthZ;
+                        $GLOBALS['$DayZ'] = $DayZ;
+                        $GLOBALS['$monthZ'] = $monthZ;
+                        $GLOBALS['$yearZ']= $yearZ;
+                    }
+                    else if ($monthZ== 9)
+                    {
+                        $monthZ= $monthZ+1;
+                        $DayZ = "0".$DayZ;
+                        $GLOBALS['$DayZ'] = $DayZ;
+                        $GLOBALS['$monthZ'] = $monthZ;
+                        $GLOBALS['$yearZ']= $yearZ;
+                    }
+                    else if ($monthZ> 9 && $monthZ<=11)
+                    {
+                        $monthZ= $monthZ+1;
+                        $DayZ = "0".$DayZ;
+                        $GLOBALS['$DayZ'] = $DayZ;
+                        $GLOBALS['$monthZ'] = $monthZ;
+                        $GLOBALS['$yearZ']= $yearZ;
+                    }
+                }
+            }
+            else
+            {
+                //Si contient pas de *
+                if($DayZ <10)
+                {
+                    if($monthZ<10)
+                    {
+                        $DayZ = "0".$DayZ;
+                        $monthZ= "0".$monthZ;
+                        $_SESSION['$DayZ'] = $DayZ;
+                        $_SESSION['$monthZ'] = $monthZ;
+                        $_SESSION['$yearZ']= $yearZ;
+                    }
+                    else
+                    {
+                        $DayZ = "0".$DayZ;
+                        $GLOBALS['$DayZ'] = $DayZ;
+                        $GLOBALS['$monthZ'] = $monthZ;
+                        $GLOBALS['$yearZ']= $yearZ;
+                    }
+                }
+                else
+                {
+                    if($monthZ<10)
+                    {
+                        $monthZ= "0".$monthZ;
+                        $GLOBALS['$DayZ'] = $DayZ;
+                        $GLOBALS['$monthZ'] = $monthZ;
+                        $GLOBALS['$yearZ']= $yearZ;
+                    }
+                    else
+                    {
+                        $GLOBALS['$DayZ'] = $DayZ;
+                        $GLOBALS['$monthZ'] = $monthZ;
+                        $GLOBALS['$yearZ']= $yearZ;
+                    }
+                }
+            }
+
+
+            $q = "";
+            $Day = $yearZ."-".$monthZ."-".$DayZ;
+            $resultatTask = HaveTaskBDD($Day);
+            $resTask = $resultatTask->fetch();
+            $resultatMeet = HaveMeetBDD($Day);
+            $resMeet = $resultatMeet->fetch();
+
+            if($resTask['id'] != false || $resMeet['id'] != false)
+            {
+                $q = "<img src=\"/image/Task.png\" width=\"15px\" height=\"15px\">";
+            }
+            else
+            {
+                $q = "";
+            }
+
             echo "<td ".(($num_mois == date("n") && $num_an == date("Y") && $tab_cal[$i][$j] == date("j"))?' class="TodayDate"':null).">
-                <a class='DayCurrentMonth' href='index.php?SelectedDay&day=$DayWanted&month=$monthWanted&year=$yearWanted'>".((strpos($tab_cal[$i][$j],"*")!==false)?str_replace("*","",$tab_cal[$i][$j]).'</a>':$tab_cal[$i][$j])."</td>";
+                <a class='DayCurrentMonth' href='index.php?SelectedDay&day=$DayWanted&month=$monthWanted&year=$yearWanted'>"
+                .$q.((strpos($tab_cal[$i][$j],"*")!==false)?str_replace("*","",$tab_cal[$i][$j]).'</a>':$tab_cal[$i][$j])."</td>";
             //echo  $tab_cal[0][0];
             //$_SESSION['DayWanted'] = $DayWanted;
         }
@@ -145,14 +275,12 @@ else if($_SESSION['test'] == 0)
 
             var_dump($tab_cal);*/
 
-
-
-
             // tab_cal[Semaine][Jour de la semaine]
 
             echo "<td ".(($num_mois == date("n") && $num_an == date("Y") && $tab_cal[$i][$j] == date("j"))?' class="TodayDate"':null).">
-                <a id='DayCurrentMonth' href='index.php?SelectedDay&day=$DayWanted&month=$monthWanted&year=$yearWanted'>"
-                .((strpos($tab_cal[$i][$j],"*")!==false)?str_replace("*","",$tab_cal[$i][$j]).'</a>':$tab_cal[$i][$j])."</td>";
+                <a id='DayCurrentMonth' href='index.php?SelectedDay&day=$DayWanted&month=$monthWanted&year=$yearWanted'>okokok"
+                .((strpos($tab_cal[$i][$j],"*")!==false)?str_replace("*","",$tab_cal[$i][$j]).'
+                </a>':$tab_cal[$i][$j])."</td>";
         }
         echo "</tr>";
     }

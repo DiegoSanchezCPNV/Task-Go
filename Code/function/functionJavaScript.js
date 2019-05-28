@@ -1,6 +1,6 @@
-
+require_once('controller/controller.php');
 
 function MailReminder()
 {
-    /*window.location = "index.php?MailReminder"*/
+    showMailReminder();
 }

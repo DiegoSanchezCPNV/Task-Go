@@ -144,7 +144,7 @@ $date = $_GET['year']."-".$_GET['month']."-".$_GET['day'];
         <!-- Affichage des résultats de la BD -->
         <tr class="TableTR">
             <td><?=mb_strimwidth($resultat['Description'],0,40,"...")?></td>
-            <td><?=$resultat['DateEtHeure'];?></td>
+            <td><?=$resultat['Date'];?></td>
             <td><?=$resultat['Durée'];?></td>
             <td><?=$resultat['Lieu'];?></td>
             <td><?=mb_strimwidth($resultat['Commentaire'],0,40,"...");?></td>
@@ -175,7 +175,7 @@ $date = $_GET['year']."-".$_GET['month']."-".$_GET['day'];
         <!-- Affichage des résultats de la BD -->
         <tr class="TableTR">
             <td><?=mb_strimwidth($resultat['Description'],0,40,"...")?></td>
-            <td><?=$resultat['DateEtHeure'];?></td>
+            <td><?=$resultat['Date'];?></td>
             <td><?=$resultat['Propriétaire'];?></td>
             <td><?=$resultat['Etat'];?></td>
             <td>

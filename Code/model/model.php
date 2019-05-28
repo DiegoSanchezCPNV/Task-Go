@@ -119,7 +119,7 @@ function ShowTask($day,$month,$year)
     $date = $year."-".$month."-".$day."";
 
 
-    $requete = "SELECT task.id, description as Description, hour as DateEtHeure, user.firstname as Propriétaire, state.name as Etat FROM task 
+    $requete = "SELECT task.id, description as Description, hour as Date, user.firstname as Propriétaire, state.name as Etat FROM task 
                 inner join user on task.id_Task_User = user.id 
                 inner join state on task.id_State = state.id 
                 where hour LIKE '".$date."%' order by hour;";
@@ -144,7 +144,7 @@ function ShowMeet($day,$month,$year)
     }
     $date = $year."-".$month."-".$day."";
     //$requete = "SELECT id, description, hour, term, place, comment, id_Meeting_User FROM meet where hour LIKE '%".$date."%';";
-    $requete = "SELECT id, description as Description, hour as DateEtHeure, term as Durée, place as Lieu, comment as Commentaire, id_Meeting_User 
+    $requete = "SELECT id, description as Description, hour as Date, term as Durée, place as Lieu, comment as Commentaire, id_Meeting_User 
                 FROM meet where hour LIKE '".$date."%' order by hour;";
 
     $resultats = $connexion->query($requete);
@@ -200,7 +200,7 @@ function ShowAllMeet($display)
 {
     $connexion = ConnexionDB();
 
-    $requete = "SELECT id, description as Description, hour as DateEtHeure, term as Durée, place as Lieu, comment as Commentaire, id_Meeting_User 
+    $requete = "SELECT id, description as Description, hour as Date, term as Durée, place as Lieu, comment as Commentaire, id_Meeting_User 
                 FROM meet 
                 where id_Meeting_User = '".$_SESSION['UserId']."'
                 order by hour desc
@@ -215,7 +215,7 @@ function ShowAllTask($display)
 {
     $connexion = ConnexionDB();
 
-    $requete = "SELECT task.id, description as Description, hour as DateEtHeure, user.firstName as Propriétaire, state.name as Etat FROM task 
+    $requete = "SELECT task.id, description as Description, hour as Date, user.firstName as Propriétaire, state.name as Etat FROM task 
                 inner join user on task.id_Task_User = user.id 
                 inner join state on task.id_State = state.id
                 where id_Task_User = '".$_SESSION['UserId']."'
@@ -348,7 +348,7 @@ function mailValidation($mailUser)
 
     mail($to,$sujet,$message,"From: admin@taskandgo.mycpnv.ch");
 }
-/*
+
 function mailReminder($mailUser,$resultats)
 {
         $ligne = $resultats->fetch();
@@ -356,7 +356,7 @@ function mailReminder($mailUser,$resultats)
 
        foreach($resultats as $resultat)
        {
-           if($ligne['hour'] )
+
        }
 
         // Envoi du mail
@@ -371,7 +371,7 @@ function mailReminder($mailUser,$resultats)
         $message = wordwrap($message, 120, "\r\n");
 
         mail($to,$sujet,$message,"From: admin@taskandgo.mycpnv.ch");
-}*/
+}
 
 function ValidUserAccount($user)
 {
@@ -380,4 +380,26 @@ function ValidUserAccount($user)
     $query = $connexion->prepare("update user set isActive = 1 where email = '".$user."'");
 
     $query->execute();
+}
+
+function HaveTaskBDD($Day)
+{
+    $connexion = ConnexionDB();
+
+    $requete = "SELECT id from task where hour LIKE '".$Day."%'";
+
+    $resultatTask = $connexion->query($requete);
+
+    return $resultatTask;
+}
+
+function HaveMeetBDD($Day)
+{
+    $connexion = ConnexionDB();
+
+    $requete = "SELECT id from meet where hour LIKE '".$Day."%'";
+
+    $resultatMeet = $connexion->query($requete);
+
+    return $resultatMeet;
 }
