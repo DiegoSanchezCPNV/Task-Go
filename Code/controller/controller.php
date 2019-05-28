@@ -70,8 +70,13 @@ function showCalendar()
 
 function showMyTaskMeeting()
 {
-    $resultatsMeet = ShowAllMeet();
-    $resultatstask = ShowAllTask();
+    $resultat = showReminderUser();
+
+    $ligne = $resultat->fetch();
+    $display = $ligne['displayNumber'];
+
+    $resultatsMeet = ShowAllMeet($display);
+    $resultatstask = ShowAllTask($display);
     require "view/view_MyTaskMeeting.php";
 }
 
@@ -212,3 +217,15 @@ function showValid($user)
     ValidUserAccount($user);
     require "view/view_validation.php";
 }
+/*
+function showMailReminder()
+{
+    if(isset($_SESSION['UserMail']))
+    {
+        $id = $_SESSION['UserId'];
+        $resultats = ShowMeetModif($id);
+        $mailUser = $_SESSION['UserMail'];
+        mailReminder($mailUser,$resultats);
+
+    }
+}*/

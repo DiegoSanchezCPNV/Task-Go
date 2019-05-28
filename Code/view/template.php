@@ -9,6 +9,7 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="style/CSS.css">
+        <script src="function/functionJavaScript.js"></script>
         <meta charset="utf-8">
     </head>
     <header>
@@ -37,6 +38,6 @@
 
         </div>
     </header>
-    <body>
+    <body onload="MailReminder()">
 
 

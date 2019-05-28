@@ -38,8 +38,7 @@ require_once('template.php');
                 <input class="radio" type="radio" id="fchoixNon" name="fchoix" value="0">Non<br>
                 <label for="fmail">Durée avant rappel</label>
                 <div class="reveal-if-active">
-                <input type="number"  width="30px" id="fnumber" name="fnumberRappel" min="1" max="120" pattern="[0-9]+"
-                       placeholder="En minutes" title="Veuillez indiquer que des chiffres dans ce champ" required><br>
+                <input type="time"  width="30px" id="fnumber" name="fnumberRappel" ><br>
                 </div></div>
         </div><br>
     <div class="row">

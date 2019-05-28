@@ -168,11 +168,12 @@ button:hover {
     margin-left: 10px;
     margin-right: 10px;
 }
-.TodayDate{
-    color: green;
 
+.TodayDate{
     font-weight: bold;
+    background: #F62929;
 }
+
 .DayCurrentMonth
 {
     width: 200px;
@@ -180,7 +181,8 @@ button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #cccccc;
+    border-style: solid;
+    border-inline-color: black;
 }
 
 .Table
@@ -253,5 +255,4 @@ input#fchoixOui:checked ~ .reveal-if-active{
     max-height: 100px; /* little bit of a magic number :( */
     overflow: visible;
     display: inline-block;
-    /*document.getElementById("ladder-meters").required = this.checked ;*/
 }

@@ -8,9 +8,9 @@
 function ConnexionDB()
 {
     //BDD en local
-    //$connexion = new PDO('mysql:host=localhost; dbname=TaskAndGo; charset=utf8','root','1234');
+    $connexion = new PDO('mysql:host=localhost; dbname=TaskAndGo; charset=utf8','root','1234');
     //BDD du site en ligne
-    $connexion = new PDO('mysql:host=localhost; dbname=sanchezd_TPI; charset=utf8','sanchezd_TPI','SanchezTPI2019$');
+    //$connexion = new PDO('mysql:host=localhost; dbname=sanchezd_TPI; charset=utf8','sanchezd_TPI','SanchezTPI2019$');
 
 
     $connexion ->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -122,7 +122,7 @@ function ShowTask($day,$month,$year)
     $requete = "SELECT task.id, description as Description, hour as DateEtHeure, user.firstname as Propriétaire, state.name as Etat FROM task 
                 inner join user on task.id_Task_User = user.id 
                 inner join state on task.id_State = state.id 
-                where hour LIKE '".$date."%';";
+                where hour LIKE '".$date."%' order by hour;";
 
     $resultats = $connexion->query($requete);
 
@@ -144,7 +144,8 @@ function ShowMeet($day,$month,$year)
     }
     $date = $year."-".$month."-".$day."";
     //$requete = "SELECT id, description, hour, term, place, comment, id_Meeting_User FROM meet where hour LIKE '%".$date."%';";
-    $requete = "SELECT id, description as Description, hour as DateEtHeure, term as Durée, place as Lieu, comment as Commentaire, id_Meeting_User FROM meet where hour LIKE '".$date."%';";
+    $requete = "SELECT id, description as Description, hour as DateEtHeure, term as Durée, place as Lieu, comment as Commentaire, id_Meeting_User 
+                FROM meet where hour LIKE '".$date."%' order by hour;";
 
     $resultats = $connexion->query($requete);
 
@@ -184,27 +185,42 @@ function CreationTask($date)
 
     $query->execute();
 }
-
-
-function ShowAllMeet()
+function showReminderUser()
 {
     $connexion = ConnexionDB();
 
-    $requete = "SELECT id, description as Description, hour as DateEtHeure, term as Durée, place as Lieu, comment as Commentaire, id_Meeting_User FROM meet where id_Meeting_User = '".$_SESSION['UserId']."';";
+    $requete = "SELECT displayNumber from user where id = '".$_SESSION['UserId']."'";
+
+    $resultat = $connexion->query($requete);
+
+    return $resultat;
+}
+
+function ShowAllMeet($display)
+{
+    $connexion = ConnexionDB();
+
+    $requete = "SELECT id, description as Description, hour as DateEtHeure, term as Durée, place as Lieu, comment as Commentaire, id_Meeting_User 
+                FROM meet 
+                where id_Meeting_User = '".$_SESSION['UserId']."'
+                order by hour desc
+                limit $display;";
 
     $resultatsMeet = $connexion->query($requete);
 
     return $resultatsMeet;
 }
 
-function ShowAllTask()
+function ShowAllTask($display)
 {
     $connexion = ConnexionDB();
 
     $requete = "SELECT task.id, description as Description, hour as DateEtHeure, user.firstName as Propriétaire, state.name as Etat FROM task 
                 inner join user on task.id_Task_User = user.id 
                 inner join state on task.id_State = state.id
-                where id_Task_User = '".$_SESSION['UserId']."';";
+                where id_Task_User = '".$_SESSION['UserId']."'
+                order by hour desc
+                limit $display;";
 
     $resultatstask = $connexion->query($requete);
 
@@ -254,7 +270,8 @@ function ShowTaskModif($id)
 {
     $connexion = ConnexionDB();
 
-    $requete = "SELECT id,description, hour, id_Task_User, id_State FROM task where id = '".$id."';";
+    $requete = "SELECT id,description, hour, id_Task_User, id_State FROM task 
+                where id = '".$id."' order by hour;";
 
     $resultats = $connexion->query($requete);
 
@@ -264,7 +281,8 @@ function ShowMeetModif($id)
 {
     $connexion = ConnexionDB();
 
-    $requete = "SELECT id,description, hour, term, place, comment, id_Meeting_User FROM meet where id = '".$id."';";
+    $requete = "SELECT id,description, hour, term, place, comment, id_Meeting_User FROM meet 
+                where id = '".$id."' order by hour;";
 
     $resultats = $connexion->query($requete);
 
@@ -308,27 +326,12 @@ function ModifySettings($displayModeNumber,$choixVue,$choixRappel,$numberRappel)
 
     $query->execute();
 }
-/*
-function ShowSettingsModif()
-{
-    $connexion = ConnexionDB();
-
-    $requete = "SELECT reminder,description, hour, id_Task_User, id_State FROM task where id = '".$id."';";
-
-    $resultats = $connexion->query($requete);
-
-    return $resultats;
-}*/
 
 
 
 function mailValidation($mailUser)
 {
     extract($_GET);
-
-    /*ini_set('SMTP','mail01.swisscenter.com');
-    ini_set('smtp_port',25);*/
-
 
 
     // Envoi du mail
@@ -345,6 +348,30 @@ function mailValidation($mailUser)
 
     mail($to,$sujet,$message,"From: admin@taskandgo.mycpnv.ch");
 }
+/*
+function mailReminder($mailUser,$resultats)
+{
+        $ligne = $resultats->fetch();
+        $meetname = $ligne['description'];
+
+       foreach($resultats as $resultat)
+       {
+           if($ligne['hour'] )
+       }
+
+        // Envoi du mail
+        $to = $mailUser;
+
+        // Le message
+        $message = "Ce mail est un rappel pour votre tâche $meetname.";
+
+        $sujet = "Mail de rappel. \r\n ";
+
+        // Dans le cas où nos lignes comportent plus de 120 caractères, nous les coupons en utilisant wordwrap()
+        $message = wordwrap($message, 120, "\r\n");
+
+        mail($to,$sujet,$message,"From: admin@taskandgo.mycpnv.ch");
+}*/
 
 function ValidUserAccount($user)
 {

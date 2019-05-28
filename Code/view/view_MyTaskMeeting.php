@@ -19,16 +19,18 @@ require_once('template.php');
         }
         ?>
     </tr>
-    <?php foreach (@$resultatsMeet as $resultat) :?>
+    <?php foreach (@$resultatsMeet as $resultat) :
+        $date = date("Y-m-d h:i:s");
+        if($resultat['DateEtHeure'] >= $date){?>
         <!-- Affichage des résultats de la BD -->
         <tr class="TableTR">
-            <td><?=$resultat['Description']?></td>
+            <td><?= mb_strimwidth($resultat['Description'],0,40,"...")?></td>
             <td><?=$resultat['DateEtHeure'];?></td>
             <td><?=$resultat['Durée'];?></td>
             <td><?=$resultat['Lieu'];?></td>
-            <td><?=$resultat['Commentaire'];?></td>
+            <td><?= mb_strimwidth($resultat['Commentaire'],0,40, "...");?></td>
         </tr>
-    <?php    endforeach;    ?>
+    <?php } endforeach;   ?>
 
 </table><br>
 <table class="Table">
@@ -41,14 +43,16 @@ require_once('template.php');
         }
         ?>
     </tr>
-    <?php foreach (@$resultatstask as $resultat) :?>
+    <?php foreach (@$resultatstask as $resultat) :
+    $date = date("Y-m-d h:i:s");
+    if($resultat['DateEtHeure'] >= $date){?>
         <!-- Affichage des résultats de la BD -->
         <tr class="TableTR">
-            <td><?=$resultat['Description']?></td>
+            <td><?=mb_strimwidth($resultat['Description'],0,40,"...")?></td>
             <td><?=$resultat['DateEtHeure'];?></td>
             <td><?=$resultat['Propriétaire'];?></td>
             <td><?=$resultat['Etat'];?></td>
         </tr>
-    <?php    endforeach;    ?>
+    <?php  } endforeach;    ?>
 
 </table>

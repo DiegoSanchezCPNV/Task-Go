@@ -143,11 +143,11 @@ $date = $_GET['year']."-".$_GET['month']."-".$_GET['day'];
     <?php foreach (@$resultatsMeet as $resultat) :?>
         <!-- Affichage des résultats de la BD -->
         <tr class="TableTR">
-            <td><?=$resultat['Description']?></td>
+            <td><?=mb_strimwidth($resultat['Description'],0,40,"...")?></td>
             <td><?=$resultat['DateEtHeure'];?></td>
             <td><?=$resultat['Durée'];?></td>
             <td><?=$resultat['Lieu'];?></td>
-            <td><?=$resultat['Commentaire'];?></td>
+            <td><?=mb_strimwidth($resultat['Commentaire'],0,40,"...");?></td>
             <td>
                 <a href="index.php?ModifyMeet&ID=<?=$resultat['id'];?>"><img src="/image/modify.png" width="15px" height="15px"></a>
             </td>
@@ -174,7 +174,7 @@ $date = $_GET['year']."-".$_GET['month']."-".$_GET['day'];
     <?php foreach (@$resultatsTask as $resultat) :?>
         <!-- Affichage des résultats de la BD -->
         <tr class="TableTR">
-            <td><?=$resultat['Description']?></td>
+            <td><?=mb_strimwidth($resultat['Description'],0,40,"...")?></td>
             <td><?=$resultat['DateEtHeure'];?></td>
             <td><?=$resultat['Propriétaire'];?></td>
             <td><?=$resultat['Etat'];?></td>

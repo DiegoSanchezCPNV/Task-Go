@@ -151,7 +151,8 @@ else if($_SESSION['test'] == 0)
             // tab_cal[Semaine][Jour de la semaine]
 
             echo "<td ".(($num_mois == date("n") && $num_an == date("Y") && $tab_cal[$i][$j] == date("j"))?' class="TodayDate"':null).">
-                <a class='DayCurrentMonth' href='index.php?SelectedDay&day=$DayWanted&month=$monthWanted&year=$yearWanted'>".((strpos($tab_cal[$i][$j],"*")!==false)?str_replace("*","",$tab_cal[$i][$j]).'</a>':$tab_cal[$i][$j])."</td>";
+                <a id='DayCurrentMonth' href='index.php?SelectedDay&day=$DayWanted&month=$monthWanted&year=$yearWanted'>"
+                .((strpos($tab_cal[$i][$j],"*")!==false)?str_replace("*","",$tab_cal[$i][$j]).'</a>':$tab_cal[$i][$j])."</td>";
         }
         echo "</tr>";
     }
