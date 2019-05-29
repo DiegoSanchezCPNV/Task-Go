@@ -8,9 +8,9 @@
 function ConnexionDB()
 {
     //BDD en local
-    $connexion = new PDO('mysql:host=localhost; dbname=TaskAndGo; charset=utf8','root','1234');
+    //$connexion = new PDO('mysql:host=localhost; dbname=TaskAndGo; charset=utf8','root','1234');
     //BDD du site en ligne
-    //$connexion = new PDO('mysql:host=localhost; dbname=sanchezd_TPI; charset=utf8','sanchezd_TPI','SanchezTPI2019$');
+    $connexion = new PDO('mysql:host=localhost; dbname=sanchezd_TPI; charset=utf8','sanchezd_TPI','SanchezTPI2019$');
 
 
     $connexion ->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -403,3 +403,6 @@ function HaveMeetBDD($Day)
 
     return $resultatMeet;
 }
+
+
+

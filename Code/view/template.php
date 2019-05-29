@@ -20,6 +20,7 @@
                 {
                     echo "<a href=\"?calendar\" class='AHeader'>Calendrier de ".@$_SESSION['UserName']."</a>";
                     echo "<a href=\"?MyTaskMeeting\" class='AHeader'>Mes tâches et rendez-vous</a>";
+                    //echo "<a href=\"?settings\" class='AHeader'>Paramétrage</a>";
                     echo "<a href=\"?settings\" class='AHeader'>Paramétrage</a>";
                     echo "<a href=\"?connexion\" class='AHeader'>Se déconnecter</a>";
                 }
