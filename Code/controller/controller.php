@@ -86,6 +86,10 @@ function showSelectedDay()
     $month = $_GET['month'];
     $year = $_GET['year'];
 
+
+    //$resultatsMeet = ShowAllMeet($day,$month,$year);
+    //$resultatstask = ShowAllTask($day,$month,$year);
+
     $resultatsTask = ShowTask($day,$month,$year);
     $resultatsMeet = ShowMeet($day,$month,$year);
     require "view/view_SelectedDay.php";
@@ -217,3 +221,6 @@ function showValid($user)
     ValidUserAccount($user);
     require "view/view_validation.php";
 }
+
+/*ALTER TABLE `taskandgo`.`user`
+CHANGE COLUMN `password` `password` VARCHAR(50) NOT NULL ;*/

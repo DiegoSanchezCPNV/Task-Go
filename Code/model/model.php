@@ -122,11 +122,13 @@ function ShowTask($day,$month,$year)
     $requete = "SELECT task.id, description as Description, hour as Date, user.firstname as Propriétaire, state.name as Etat FROM task 
                 inner join user on task.id_Task_User = user.id 
                 inner join state on task.id_State = state.id 
-                where hour LIKE '".$date."%' order by hour;";
+                where hour LIKE '".$date."%'
+                and id_Task_User = '".$_SESSION['UserId']."'
+                order by hour";
 
-    $resultats = $connexion->query($requete);
+    $resultatsTask = $connexion->query($requete);
 
-    return $resultats;
+    return $resultatsTask;
 
 }
 
@@ -145,11 +147,14 @@ function ShowMeet($day,$month,$year)
     $date = $year."-".$month."-".$day."";
     //$requete = "SELECT id, description, hour, term, place, comment, id_Meeting_User FROM meet where hour LIKE '%".$date."%';";
     $requete = "SELECT id, description as Description, hour as Date, term as Durée, place as Lieu, comment as Commentaire, id_Meeting_User 
-                FROM meet where hour LIKE '".$date."%' order by hour;";
+                FROM meet 
+                where hour LIKE '".$date."%'
+                AND id_Meeting_User = '".$_SESSION['UserId']."' 
+                order by hour;";
 
-    $resultats = $connexion->query($requete);
+    $resultatsMeet = $connexion->query($requete);
 
-    return $resultats;
+    return $resultatsMeet;
 }
 
 function CreationMeet($date)
@@ -243,7 +248,9 @@ function DeleteUser($id)
 {
     $connexion = ConnexionDB();
 
-    $query = $connexion->prepare("delete from user where id = '".$id."'");
+    //$query = $connexion->prepare("delete from user where id = '".$id."'");
+
+    $query = $connexion->prepare("update user set isActive = 0 where id = '".$id."';");
 
     $query->execute();
 }
@@ -349,30 +356,6 @@ function mailValidation($mailUser)
     mail($to,$sujet,$message,"From: admin@taskandgo.mycpnv.ch");
 }
 
-function mailReminder($mailUser,$resultats)
-{
-        $ligne = $resultats->fetch();
-        $meetname = $ligne['description'];
-
-       foreach($resultats as $resultat)
-       {
-
-       }
-
-        // Envoi du mail
-        $to = $mailUser;
-
-        // Le message
-        $message = "Ce mail est un rappel pour votre tâche $meetname.";
-
-        $sujet = "Mail de rappel. \r\n ";
-
-        // Dans le cas où nos lignes comportent plus de 120 caractères, nous les coupons en utilisant wordwrap()
-        $message = wordwrap($message, 120, "\r\n");
-
-        mail($to,$sujet,$message,"From: admin@taskandgo.mycpnv.ch");
-}
-
 function ValidUserAccount($user)
 {
     $connexion = ConnexionDB();
@@ -386,7 +369,9 @@ function HaveTaskBDD($Day)
 {
     $connexion = ConnexionDB();
 
-    $requete = "SELECT id from task where hour LIKE '".$Day."%'";
+    $requete = "SELECT task.id from task 
+                inner join user on task.id_Task_User = user.id 
+                where hour LIKE '".$Day."%' and id_Task_User = '".$_SESSION['UserId']."'";
 
     $resultatTask = $connexion->query($requete);
 
@@ -397,7 +382,9 @@ function HaveMeetBDD($Day)
 {
     $connexion = ConnexionDB();
 
-    $requete = "SELECT id from meet where hour LIKE '".$Day."%'";
+    $requete = "SELECT meet.id from meet  
+                inner join user on meet.id_Meeting_User = user.id 
+                where hour LIKE '".$Day."%' and id_Meeting_User = '".$_SESSION['UserId']."'";
 
     $resultatMeet = $connexion->query($requete);
 

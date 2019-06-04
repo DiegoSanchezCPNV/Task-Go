@@ -46,7 +46,7 @@ $date = substr($ligne['hour'],0,10);
             </div>
         </div><br>
         <div class="row">
-            <button type="submit">Terminer l'ajout</button>
+            <button type="submit">Terminer la modification</button>
         </div>
     </div>
 </form>
