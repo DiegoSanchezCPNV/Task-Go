@@ -114,3 +114,30 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
+-- Data for DisplayMode
+insert into displaymode (id, name) values (null,'Mois');
+insert into displaymode (id, name) values (null,'Semaine');
+insert into displaymode (id, name) values (null,'Jour');
+
+-- Data for State
+insert into state (id, name) values (null, 'En cours');
+insert into state (id, name) values (null, 'Pas commencé');
+insert into state (id, name) values (null, 'Terminé');
+
+-- Date for User
+-- Mot de passe : 12345678$
+insert into user (id, firstName, lastName, password, email, reminder, termBefore, id_DisplayMode, displayNumber,isAdmin, isActive) values (null,'Diego','Sanchez','','diego.sanchez@cpnv.ch',0,'00:00:00',1,3,0,1);
+
+-- Data for meet
+insert into meet (id, description, hour, term, place, comment, id_Meeting_User) values (null,'Visite','2019-06-06 10:00:00','01:30:00','Tour Eiffel','Prendre passeport',1);
+insert into meet (id, description, hour, term, place, comment, id_Meeting_User) values (null,'Restaurant','2019-06-10 12:00:00','01:00:00','MacDonald','Prendre Paul',1);
+
+
+-- Data for Task
+insert into task (id, description, hour, id_Task_User, id_State) values (null,'Promener le chien de la voisine','2019-06-05',1,1);
+insert into task (id, description, hour, id_Task_User, id_State) values (null,'Rendre projet TPI','2019-06-06',1,1);
+
+
+
