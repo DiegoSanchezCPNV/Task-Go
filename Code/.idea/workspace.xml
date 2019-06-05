@@ -1,27 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5c328a0e-7cb2-456e-a161-c4dd2cd9dec1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Index.php" beforeDir="false" afterPath="$PROJECT_DIR$/Index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/model.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/model.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/CSS.css" beforeDir="false" afterPath="$PROJECT_DIR$/style/CSS.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/template.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/template.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/view_AddMeet.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/view_AddMeet.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/view_AddTask.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/view_AddTask.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/view_Calendar.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/view_Calendar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/view_Connexion.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/view_Connexion.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/view_Home.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/view_Home.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/view_Inscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/view_Inscription.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/view_ModifyMeet.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/view_ModifyMeet.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/view_ModifyTask.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/view_ModifyTask.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/view_MyTaskMeeting.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/view_MyTaskMeeting.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/view_SelectedDay.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/view_SelectedDay.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/view_Settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/view_Settings.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/view_UserList.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/view_UserList.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/view_validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/view_validation.php" afterDir="false" />
-    </list>
+    <list default="true" id="5c328a0e-7cb2-456e-a161-c4dd2cd9dec1" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +13,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/view/view_SelectedDay.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-391">
+            <state relative-caret-position="68">
               <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
             </state>
           </provider>
@@ -42,7 +22,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/view/view_AddTask.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-12">
+            <state relative-caret-position="53">
               <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
             </state>
           </provider>
@@ -51,8 +31,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controller/controller.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2388">
-              <caret line="217" selection-start-line="217" selection-end-line="217" />
+            <state relative-caret-position="467">
+              <caret line="113" lean-forward="true" selection-start-line="113" selection-end-line="113" />
             </state>
           </provider>
         </entry>
@@ -60,8 +40,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/model/model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+            <state relative-caret-position="221">
+              <caret line="17" column="1" lean-forward="true" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -109,8 +89,8 @@
         <option value="$PROJECT_DIR$/view/view_UserList.php" />
         <option value="$PROJECT_DIR$/view/view_validation.php" />
         <option value="$PROJECT_DIR$/style/CSS.css" />
-        <option value="$PROJECT_DIR$/controller/controller.php" />
         <option value="$PROJECT_DIR$/MailReminder.php" />
+        <option value="$PROJECT_DIR$/controller/controller.php" />
         <option value="$PROJECT_DIR$/model/model.php" />
       </list>
     </option>
@@ -223,12 +203,12 @@
       <workItem from="1559023884936" duration="25591000" />
       <workItem from="1559110353299" duration="12294000" />
       <workItem from="1559635386545" duration="9770000" />
-      <workItem from="1559715182892" duration="2940000" />
+      <workItem from="1559715182892" duration="3478000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="191388000" />
+    <option name="totallyTimeSpent" value="191926000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -239,7 +219,7 @@
       <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.29957357" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4978678" visible="true" weight="0.22751896" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4978678" weight="0.22751896" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4989339" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -382,29 +362,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/view/view_SelectedDay.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-391">
+        <state relative-caret-position="68">
+          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/view_AddTask.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="53">
           <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/controller/controller.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2388">
-          <caret line="217" selection-start-line="217" selection-end-line="217" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/view_AddTask.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-12">
-          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+        <state relative-caret-position="467">
+          <caret line="113" lean-forward="true" selection-start-line="113" selection-end-line="113" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/model/model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+        <state relative-caret-position="221">
+          <caret line="17" column="1" lean-forward="true" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
         </state>
       </provider>
     </entry>
