@@ -2,8 +2,7 @@
 /**
  * Created by PhpStorm.
  * User: Diego.SANCHEZ
- * Date: 2019
- * Time: 08:47
+ * Date: mai-juin 2019
  */
 
 require_once('template.php');

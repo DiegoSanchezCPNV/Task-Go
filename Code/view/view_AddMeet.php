@@ -2,11 +2,12 @@
 /**
  * Created by PhpStorm.
  * User: Diego.SANCHEZ
- * Date: Mai 2019
+ * Date: mai-juin 2019
  */
 require_once('template.php');
 
 $date = $_GET['date'];
+//Formulaire d'ajout d'un rendez-vous
 ?>
 
 <h1>Formulaire d'ajout d'un rendez-vous</h1>

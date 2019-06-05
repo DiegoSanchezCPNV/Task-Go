@@ -2,8 +2,7 @@
 /**
  * Created by PhpStorm.
  * User: Diego.SANCHEZ
- * Date: 2019
- * Time: 08:44
+ * Date: mai-juin 2019
  */
 
 
@@ -85,10 +84,6 @@ function showSelectedDay()
     $day = $_GET['day'];
     $month = $_GET['month'];
     $year = $_GET['year'];
-
-
-    //$resultatsMeet = ShowAllMeet($day,$month,$year);
-    //$resultatstask = ShowAllTask($day,$month,$year);
 
     $resultatsTask = ShowTask($day,$month,$year);
     $resultatsMeet = ShowMeet($day,$month,$year);
@@ -211,7 +206,6 @@ function showSettings()
     }
     else
     {
-        //$resultats = ShowSettingsModif();
         require "view/view_Settings.php";
     }
 }
@@ -221,6 +215,3 @@ function showValid($user)
     ValidUserAccount($user);
     require "view/view_validation.php";
 }
-
-/*ALTER TABLE `taskandgo`.`user`
-CHANGE COLUMN `password` `password` VARCHAR(50) NOT NULL ;*/

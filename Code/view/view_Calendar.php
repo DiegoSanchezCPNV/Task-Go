@@ -2,16 +2,18 @@
 /**
  * Created by PhpStorm.
  * User: Diego.SANCHEZ
- * Date: Mai 2019
+ * Date: mai-juin 2019
  */
 require_once('template.php');
 require_once('model/model.php');
+//vue du calendrier, réalisé à partir d'un exemple via
+//https://codes-sources.commentcamarche.net/source/42671-calendrier-simple-facilement-modifiable-affichage-complet
 ?>
 
 <h1>Calendrier</h1>
 
 <?php
-//https://codes-sources.commentcamarche.net/source/42671-calendrier-simple-facilement-modifiable-affichage-complet
+
 // Récuperation des variables passées, on donne soit année; mois; année+mois
 if(!isset($_GET['jour'])) $num_jour = date("j"); else $num_jour = $_GET['jour'];
 if(!isset($_GET['mois'])) $num_mois = date("n"); else $num_mois = $_GET['mois'];
@@ -46,24 +48,8 @@ for($i=0;$i<6;$i++) {
 }
 $_SESSION['test']=1;
 
-//$key = array_search($num_jour, $tab_cal);
-//var_dump($key);
-
-
 $GLOBALS['a']= 3;
 $GLOBALS['b']=4;
-/*
-if(in_array($num_jour, $tab_cal))
-{
-    $GLOBALS['a']= 1;
-    $GLOBALS['b']=2;
-}
-else
-{
-    $GLOBALS['a']= 3;
-    $GLOBALS['b']=4;
-}*/
-
 
 //Affichage Mois
 if($_SESSION['test'] == 1)
@@ -100,7 +86,7 @@ if($_SESSION['test'] == 1)
             $monthZ = $monthWanted;
             $yearZ = $yearWanted;
 
-
+            //obtenir une date dite "propre" exemple 05.06.2019 au lieu de *5.6.2019
             if(strpos($DayZ, '*') !== false)
             {
                 //1) supprimer l'étoile du string
@@ -227,14 +213,12 @@ if($_SESSION['test'] == 1)
             echo "<td ".(($num_mois == date("n") && $num_an == date("Y") && $tab_cal[$i][$j] == date("j"))?' class="TodayDate"':null).">
                 <a class='DayCurrentMonth' href='index.php?SelectedDay&day=$DayWanted&month=$monthWanted&year=$yearWanted'>"
                 .$q.((strpos($tab_cal[$i][$j],"*")!==false)?str_replace("*","",$tab_cal[$i][$j]).'</a>':$tab_cal[$i][$j])."</td>";
-            //echo  $tab_cal[0][0];
-            //$_SESSION['DayWanted'] = $DayWanted;
         }
         echo "</tr>";
     }
     echo "</table>";
  }
-//Affichage Semaine
+//test d'un affichage par semaine (pas complet)
 else if($_SESSION['test'] == 0)
 {
 //mettre test et addition ici

@@ -2,9 +2,9 @@
 /**
  * Created by PhpStorm.
  * User: Diego.SANCHEZ
- * Date: 2019
- * Time: 09:11
+ * Date: mai-juin 2019
  */
+//Template qui apparaitra sur toutes les pages du site
 ?>
 <html>
     <head>

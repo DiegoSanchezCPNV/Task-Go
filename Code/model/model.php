@@ -2,7 +2,7 @@
 /**
  * Created by PhpStorm.
  * User: Diego.SANCHEZ
- * Date: mai 2019
+ * Date: mai-juin 2019
  */
 
 function ConnexionDB()
@@ -11,7 +11,6 @@ function ConnexionDB()
     //$connexion = new PDO('mysql:host=localhost; dbname=TaskAndGo; charset=utf8','root','1234');
     //BDD du site en ligne
     $connexion = new PDO('mysql:host=localhost; dbname=sanchezd_TPI; charset=utf8','sanchezd_TPI','SanchezTPI2019$');
-
 
     $connexion ->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -145,7 +144,6 @@ function ShowMeet($day,$month,$year)
         $day = "0".$day;
     }
     $date = $year."-".$month."-".$day."";
-    //$requete = "SELECT id, description, hour, term, place, comment, id_Meeting_User FROM meet where hour LIKE '%".$date."%';";
     $requete = "SELECT id, description as Description, hour as Date, term as Durée, place as Lieu, comment as Commentaire, id_Meeting_User 
                 FROM meet 
                 where hour LIKE '".$date."%'
@@ -248,8 +246,6 @@ function DeleteUser($id)
 {
     $connexion = ConnexionDB();
 
-    //$query = $connexion->prepare("delete from user where id = '".$id."'");
-
     $query = $connexion->prepare("update user set isActive = 0 where id = '".$id."';");
 
     $query->execute();
@@ -339,7 +335,6 @@ function ModifySettings($displayModeNumber,$choixVue,$choixRappel,$numberRappel)
 function mailValidation($mailUser)
 {
     extract($_GET);
-
 
     // Envoi du mail
     $to = $mailUser;

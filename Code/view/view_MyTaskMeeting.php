@@ -2,16 +2,17 @@
 /**
  * Created by PhpStorm.
  * User: Diego.SANCHEZ
- * Date: 2019
- * Time: 08:41
+ * Date: mai-juin 2019
  */
 require_once('template.php');
+//Affichage de mes tâches et rendez-vous à venir depuis la bdd
 ?>
 
 <h1>Mes tâches et rendez-vous à venir</h1>
 <table class="Table">
     <tr class="TableName">
         <?php
+        //Affichage des rendez-vous depuis le résultat de la bdd
         for ($i = 1; $i < @$resultatsMeet->columnCount()-1; $i++)
         {
             $entete = @$resultatsMeet->getColumnMeta($i);
@@ -36,6 +37,7 @@ require_once('template.php');
 <table class="Table">
     <tr class="TableName">
         <?php
+        //Affichage des tâches depuis le résultat de la bdd
         for ($i = 1; $i < @$resultatstask->columnCount(); $i++)
         {
             $entete = @$resultatstask->getColumnMeta($i);

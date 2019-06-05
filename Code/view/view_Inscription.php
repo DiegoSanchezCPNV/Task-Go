@@ -2,10 +2,11 @@
 /**
  * Created by PhpStorm.
  * User: Diego.SANCHEZ
- * Date: mai 2019
+ * Date: mai-juin 2019
  */
 require_once('template.php');
 $special = 'àâäãçéèêëìîïòôöõùûüñ &*?!:;,\t#~"^¨%$£?²¤§%*()[]{}<>|\\/`\'';
+//formulaire d'inscription
 ?>
 
 <h1>Inscription</h1>

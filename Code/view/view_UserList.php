@@ -2,9 +2,10 @@
 /**
  * Created by PhpStorm.
  * User: Moi
- * Date: mai 2019
+ * Date: mai-juin 2019
  */
 require_once('template.php');
+//Affichage de la liste des utilisateurs avec un bouton de "Suppression" qui passe en inactif les comptes utilisateurs
 ?>
 <h1>Liste des utilisateurs</h1>
 <table class="Table">

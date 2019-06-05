@@ -2,10 +2,10 @@
 /**
  * Created by PhpStorm.
  * User: Diego.SANCHEZ
- * Date: 14.05.2019
- * Time: 14:14
+ * Date: mai-juin 2019
  */
 require_once('template.php');
+//Formulaire de connexion
 ?>
 
 <h1>Connexion</h1>

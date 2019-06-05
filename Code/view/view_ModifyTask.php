@@ -2,14 +2,14 @@
 /**
  * Created by PhpStorm.
  * User: Diego.SANCHEZ
- * Date: mai 2019
+ * Date: mai-juin 2019
  */
 require_once('template.php');
 $ligne = $resultats->fetch();
 
 $time =  substr($ligne['hour'], -8, 8); // retourne que l'heure du meeting
 $date = substr($ligne['hour'],0,10);
-
+//formulaire de modification d'une tâche
 ?>
 <h1>Formulaire de modification d'une tâche</h1>
 

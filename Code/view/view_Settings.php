@@ -2,10 +2,10 @@
 /**
  * Created by PhpStorm.
  * User: Diego.SANCHEZ
- * Date: mai 2019
+ * Date: mai-juin 2019
  */
 require_once('template.php');
-
+//Formulaire de création pour le paramétrage du site
 ?>
 
 <h1>Paramétrage</h1>
