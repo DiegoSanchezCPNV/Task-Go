@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `TaskAndGo`.`user` (
   `isAdmin` TINYINT(1) NOT NULL,
   `isActive` TINYINT(1) NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `id_Role_idx` (`id_DisplayMode` ASC) VISIBLE,
+  INDEX `id_Role_idx` (`id_DisplayMode` ASC),
   CONSTRAINT `id_Display`
     FOREIGN KEY (`id_DisplayMode`)
     REFERENCES `TaskAndGo`.`displayMode` (`id`)
@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `TaskAndGo`.`meet` (
   `comment` VARCHAR(100) NOT NULL,
   `id_Meeting_User` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `id_User_idx` (`id_Meeting_User` ASC) VISIBLE,
+  INDEX `id_User_idx` (`id_Meeting_User` ASC),
   CONSTRAINT `id_Meeting_User`
     FOREIGN KEY (`id_Meeting_User`)
     REFERENCES `TaskAndGo`.`user` (`id`)
@@ -96,8 +96,8 @@ CREATE TABLE IF NOT EXISTS `TaskAndGo`.`task` (
   `id_Task_User` INT NOT NULL,
   `id_State` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `id_User_idx` (`id_Task_User` ASC) VISIBLE,
-  INDEX `id_State_idx` (`id_State` ASC) VISIBLE,
+  INDEX `id_User_idx` (`id_Task_User` ASC),
+  INDEX `id_State_idx` (`id_State` ASC),
   CONSTRAINT `id_Task_Userr`
     FOREIGN KEY (`id_Task_User`)
     REFERENCES `TaskAndGo`.`user` (`id`)
